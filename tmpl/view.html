@@ -26,9 +26,10 @@
 </head>
 
 <body>
-	<nav class="navbar">
+
+	<nav>
 		<div class="container">
-			<div class="navbar-brand">
+			<!-- <div class="navbar-brand">
 				<a class="navbar-item img">
 					<img src="/static/img/BrucheionLogo.png" alt="Brucheion logo">
 				</a>
@@ -37,7 +38,7 @@
 					<span></span>
 					<span></span>
 				</span>
-			</div>
+			</div> -->
 			<div id="navMenu" class="navbar-menu">
 				<div class="navbar-end">
 					<div class="navbar-item has-dropdown is-hoverable">
@@ -78,13 +79,16 @@
 			});
 		})();
 	</script>
+
 	<section class="hero is-link">
-		<div class="hero-body">
+		<div class="hero-body" style="height:135px">
 			<div class="container">
-				<h1 class="title">
-					Passage Overview
-				</h1>
+
 				<div class="columns">
+					<div class="coulumn" style="margin-left: -100px; margin-right: 50px">
+						<h1 class="title">Passage<br />Overview</hi>
+					</div>
+
 					<div class="coulumn">
 						<p class="subtitle"></p><a href="{{.Host}}/view/{{.First}}/"><i
 								class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></a>
@@ -114,54 +118,20 @@
 
 	<div class="container is-fluid">
 
-
-		<section>
-
-		</section>
-		<div class="tile is-ancestor">
-			<div class="tile is-parent">
-				<div class="tile is-child box tile-resizable">
-					<p class="has-text-right"><a class="button is-small" href="/edit2/{{.Title}}/">EDIT IMAGE
-							REFERENCES</a></p>
-					<br />
-					<p>ImageRef: {{.ImageHTML}}</p>
-				</div>
-			</div>
-			<div class="tile is-parent">
-				<div class="tile is-child box tile-resizable">
-					<p class="has-text-right"><a class="button is-small" href="/editcat/{{.Title}}/">EDIT METADATA</a>
-					</p>
-					<br />
-					<table>
-						<tr>
-							<td>WorkURN: {{.CatID}}</td>
-							<td>Scheme: {{.CatCit}}</td>
-						</tr>
-						<tr>
-							<td>Workgroup: {{.CatGroup}}</td>
-							<td>Title: {{.CatWork}}</td>
-						</tr>
-						<tr>
-							<td>Version: {{.CatVers}}</td>
-							<td>Exemplar: {{.CatExmpl}}</td>
-						</tr>
-						<tr>
-							<td>Online: {{.CatOn}}</td>
-							<td>Language: {{.CatLan}}</td>
-						</tr>
-					</table>
-				</div>
-			</div>
-		</div>
 		<section>
 			<div class="tile is-ancestor">
 				<div class="tile is-parent">
-					<div class="tile is-child box tile-resizable" style="height: 500px;">
+					<div class="tile is-child box tile-resizable is-12" style="height: 350px;">
 						<div id="image_imageContainer"></div>
 					</div>
 				</div>
-				<div class="tile is-parent">
-					<div class="tile is-child box tile-resizable">
+			</div>
+			<div class="tile is-ancestor">
+				<div class="tile is-parent is-vertical">
+					<div class="tile is-child box tile-resizable is-12">
+						<div style="text-indent: 2em; overflow-y: scroll; height: 125px; border: 1px solid lightgrey; padding: 5px">
+							{{.Text}}
+						</div>
 						<br />
 						<div class="tile is-child">
 							<p class="has-text-left">Previous: {{.PreviousLink}}</p>
@@ -185,13 +155,50 @@
 										TRANSCRIPTION</a></p>
 							</div>
 						</div>
-						<div style="text-indent: 2em">
-							{{.Text}}
-						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<section>
+			<div class="tile is-ancestor">
+				<div class="tile is-parent">
+					<div class="tile is-child box tile-resizable">
+						<br />
+						<p>ImageRef: <br />{{.ImageHTML}}</p>
+						<br />
+						<p class="has-text-right"><a class="button is-small" href="/edit2/{{.Title}}/">EDIT IMAGE
+								REFERENCES</a></p>
+					</div>
+				</div>
+				<div class="tile is-parent">
+					<div class="tile is-child box tile-resizable">
+						<table>
+							<tr>
+								<td>WorkURN: {{.CatID}}&nbsp;&nbsp;&nbsp;</td>
+								<td>Scheme: {{.CatCit}}</td>
+							</tr>
+							<tr>
+								<td>Workgroup: {{.CatGroup}}</td>
+								<td>Title: {{.CatWork}}</td>
+							</tr>
+							<tr>
+								<td>Version: {{.CatVers}}</td>
+								<td>Exemplar: {{.CatExmpl}}</td>
+							</tr>
+							<tr>
+								<td>Online: {{.CatOn}}</td>
+								<td>Language: {{.CatLan}}</td>
+							</tr>
+						</table>
+						<br />
+						<p class="has-text-right"><a class="button is-small" href="/editcat/{{.Title}}/">EDIT METADATA</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<footer>
 			<br />
 			<p>Brucheion is ©2017–2018 Thomas Koentges. CITE/CTS is ©2002–2017 Neel Smith and Christopher Blackwell.
@@ -203,6 +210,7 @@
 				<a href="https://github.com/cite-architecture/ict2">ICT2</a> and on
 				<a href="http://openseadragon.github.io">Openseadragon</a>.</p>
 		</footer>
+
 	</div>
 	<input type="hidden" id="initialCITE" value="{{.ImageJS}}" readonly>
 	<script type="text/javascript" src="{{.Host}}/js/BrIC.js"></script>
@@ -238,6 +246,7 @@
 			}
 		};
 	</script>
+
 </body>
 
 </html>

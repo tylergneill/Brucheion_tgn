@@ -26,9 +26,10 @@
 </head>
 
 <body>
-	<nav class="navbar">
+
+	<nav>
 		<div class="container">
-			<div class="navbar-brand">
+			<!-- <div class="navbar-brand">
 				<a class="navbar-item img">
 					<img src="/static/img/BrucheionLogo.png" alt="Brucheion logo">
 				</a>
@@ -37,7 +38,7 @@
 					<span></span>
 					<span></span>
 				</span>
-			</div>
+			</div> -->
 			<div id="navMenu" class="navbar-menu">
 				<div class="navbar-end">
 					<div class="navbar-item has-dropdown is-hoverable">
@@ -78,13 +79,17 @@
 			});
 		})();
 	</script>
+
 	<section class="hero is-link">
-		<div class="hero-body">
+
+		<div class="hero-body" style="height:135px">
 			<div class="container">
-				<h1 class="title">
-					Transcription Desk
-				</h1>
+
 				<div class="columns">
+					<div class="coulumn" style="margin-left: -100px; margin-right: 50px">
+						<h1 class="title">Transcription<br />Desk</hi>
+					</div>
+
 					<div class="coulumn">
 						<p class="subtitle"></p><a href="{{.Host}}/edit/{{.First}}/"><i
 								class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></a>
@@ -128,23 +133,25 @@
 					</div>
 					<div class="tile is-child is-1">
 						<div class="column is-12 has-text-right">
-							<a class="button is-small is-danger" href="{{.Host}}/view/{{.Title}}/">CANCEL</a>
-                            <a class="button is-small" href="{{.Host}}/edit/{{.Title}}/pt">PORTRAIT</a>
+							<a class="button is-medium" href="{{.Host}}/view/{{.Title}}/">Cancel</a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="tile is-ancestor">
+
 				<div class="tile is-parent is-vertical">
-					<div class="tile is-child box tile-resizable is-12">
-						<div class="box" style="height: 500px;">
-							<div id="image_imageContainer"></div>
-						</div>
+					<div class="tile is-child box tile-resizable is-12" style="height: 350px;">
+						<div id="image_imageContainer"></div>
 					</div>
+
 					<form action="{{.Host}}/save/{{.Title}}/" method="POST">
 						<div class="tile is-child box tile-resizable is-12">
-							<p class="subtitle">Transcription</p>
+							<!-- <p class="subtitle">Transcription</p> -->
 							<div>
+								<div><textarea class="specialKey" name="text" rows="5" ,
+										cols="150">{{printf "%s" .Text}}</textarea></div>
+								<div><input class="button is-primary" type="submit" value="Save"></div>
 								<div class="tile is-child columns">
 									<div class="column">
 										<button type="button" onclick="makeXSmall()"><span
@@ -168,15 +175,15 @@
 										</select>
 									</div>
 								</div>
-								<div><textarea class="specialKey" name="text" rows="15" ,
-										cols="120">{{printf "%s" .Text}}</textarea></div>
-								<div><input class="button is-primary" type="submit" value="Save"></div>
 							</div>
 						</div>
 					</form>
 				</div>
+
 			</div>
 		</section>
+
+
 		<footer>
 			<br />
 			<p>Brucheion is ©2017–2018 Thomas Koentges. CITE/CTS is ©2002–2017 Neel Smith and Christopher Blackwell.
@@ -191,7 +198,7 @@
 	</div>
 
 	<input type="hidden" id="initialCITE" value="{{.ImageJS}}" readonly>
-	<script type="text/javascript" src="{{.Host}}/js/BrIC.js"></script>
+	<script type="text/javascript" src="{{.Host}}/js/ict2.js"></script>
 	<script type="text/javascript">
 		var letterMap,
 			keys,

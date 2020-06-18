@@ -102,7 +102,7 @@ func loadPage(transcription Transcription, kind string) (*Page, error) {
 </script>`
 	starthtml := `<a id="imageLink`
 	middlehtml := `">`
-	endhtml := ` </a>`
+	endhtml := ` </a><br />`
 	var jsstrings, htmlstrings []string
 	jsstrings = append(jsstrings, beginjs)
 	for i := range transcription.ImageRef {

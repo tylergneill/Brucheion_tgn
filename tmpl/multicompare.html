@@ -55,48 +55,50 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item img">
-                    <img src="/static/img/BrucheionLogo.png" alt="Brucheion logo">
-                </a>
-                <span class="navbar-burger burger" data-target="navMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </div>
-            <div id="navMenu" class="navbar-menu">
-                <div class="navbar-end">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <p class="navbar-link">
-                            Tools
-                        </p>
-                        <div class="navbar-dropdown">
-                            <a href="{{.Host}}/view/{{.Title}}/" class="navbar-item">Passage Overview</a>
-                            <a href="{{.Host}}/edit2/{{.Title}}/" class="navbar-item">Image Citation</a>
-                            <a href="{{.Host}}/edit/{{.Title}}/" class="navbar-item">Transcribe</a>
-                            <a href="{{.Host}}/multicompare/{{.Title}}/" class="navbar-item">Multicompare</a>
-                            <a href="{{.Host}}/tree/" class="navbar-item">Morpho-syntactic analysis</a>
-                            <a href="{{.Host}}/editcat/{{.Title}}/" class="navbar-item">Edit Metadata</a>
-                        </div>
-                    </div>
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <p class="navbar-link">
-                            <i class="fa fa-lg fa-fw fa-user-circle"></i> {{.User}}
-                        </p>
-                        <div class="navbar-dropdown">
-                            <a href="{{.Host}}/export/exported/" class="navbar-item">Download CEX</a>
-                            <a href="#" class="navbar-item">Account Settings</a>
-                            <a href="#" class="navbar-item">Display Settings</a>
-                            <a href="{{.Host}}/logout/" class="navbar-item">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+
+  <nav>
+      <div class="container">
+          <!-- <div class="navbar-brand">
+              <a class="navbar-item img">
+                  <img src="/static/img/BrucheionLogo.png" alt="Brucheion logo">
+              </a>
+              <span class="navbar-burger burger" data-target="navMenu">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </span>
+          </div> -->
+          <div id="navMenu" class="navbar-menu">
+              <div class="navbar-end">
+                  <div class="navbar-item has-dropdown is-hoverable">
+                      <p class="navbar-link">
+                          Tools
+                      </p>
+                      <div class="navbar-dropdown">
+                          <a href="{{.Host}}/view/{{.Title}}/" class="navbar-item">Passage Overview</a>
+                          <a href="{{.Host}}/edit2/{{.Title}}/" class="navbar-item">Image Citation</a>
+                          <a href="{{.Host}}/edit/{{.Title}}/" class="navbar-item">Transcribe</a>
+                          <a href="{{.Host}}/multicompare/{{.Title}}/" class="navbar-item">Multicompare</a>
+                          <a href="{{.Host}}/tree/" class="navbar-item">Morpho-syntactic analysis</a>
+                          <a href="{{.Host}}/editcat/{{.Title}}/" class="navbar-item">Edit Metadata</a>
+                      </div>
+                  </div>
+                  <div class="navbar-item has-dropdown is-hoverable">
+                      <p class="navbar-link">
+                          <i class="fa fa-lg fa-fw fa-user-circle"></i> {{.User}}
+                      </p>
+                      <div class="navbar-dropdown">
+                          <a href="{{.Host}}/export/exported/" class="navbar-item">Download CEX</a>
+                          <a href="#" class="navbar-item">Account Settings</a>
+                          <a href="#" class="navbar-item">Display Settings</a>
+                          <a href="{{.Host}}/logout/" class="navbar-item">Logout</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </nav>
+
     <script type="text/javascript">
         (function () {
             var burger = document.querySelector('.burger');
@@ -108,41 +110,46 @@
         })();
     </script>
     <section class="hero is-link">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title">
-                    Multicompare
-                </h1>
-                <div class="columns">
-                    <div class="coulumn">
-                        <p class="subtitle"></p><a href="{{.Host}}/multicompare/{{.First}}"><i
-                                class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></a>
-                        <a href="{{.Host}}/multicompare/{{.Previous}}/"><i class="fa fa-chevron-left"></i></a>
-                        <strong>{{.Title}}</strong>
-                        <a href="{{.Host}}/multicompare/{{.Next}}/"><i class="fa fa-chevron-right"></i></a>
-                        <a href="{{.Host}}/multicompare/{{.Last}}/"><i class="fa  fa-chevron-right"></i><i
-                                class="fa  fa-chevron-right"></i></a>
-                        </p>
-                    </div>
-                    <div class="column">
-                        <form name="nav">
-                            <div class="control">
-                                <div class="select">
-                                    <select name="SelectURL" onchange="document.location.href=document.nav.SelectURL.options[document.nav.SelectURL.selectedIndex].value">
-                                        {{.TextHTML}}
-                                    </select>
-                                </div>
+
+      <div class="hero-body" style="height:135px">
+  			<div class="container">
+
+  				<div class="columns">
+  					<div class="coulumn" style="margin-left: -100px; margin-right: 50px">
+  						<h1 class="title">Multicompare</hi>
+  					</div>
+
+            <div class="columns">
+                <div class="coulumn">
+                    <p class="subtitle"></p><a href="{{.Host}}/multicompare/{{.First}}"><i
+                            class="fa fa-chevron-left"></i><i class="fa fa-chevron-left"></i></a>
+                    <a href="{{.Host}}/multicompare/{{.Previous}}/"><i class="fa fa-chevron-left"></i></a>
+                    <strong>{{.Title}}</strong>
+                    <a href="{{.Host}}/multicompare/{{.Next}}/"><i class="fa fa-chevron-right"></i></a>
+                    <a href="{{.Host}}/multicompare/{{.Last}}/"><i class="fa  fa-chevron-right"></i><i
+                            class="fa  fa-chevron-right"></i></a>
+                    </p>
+                </div>
+                <div class="column">
+                    <form name="nav">
+                        <div class="control">
+                            <div class="select">
+                                <select name="SelectURL" onchange="document.location.href=document.nav.SelectURL.options[document.nav.SelectURL.selectedIndex].value">
+                                    {{.TextHTML}}
+                                </select>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
+
+            </div>
         </div>
+      </div>
     </section>
     <section>
         {{.InTextHTML}}
     </section>
-
 
     <footer>
         <br/>

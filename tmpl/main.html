@@ -10,14 +10,16 @@
 </head>
 <body>
 
-<section class="hero is-fullheight is-primary">
+<section class="hero is-fullheight is-primary" style="background-color: #017BAC;">
   <div class="hero-body">
     <div class="container has-text-centered">
       <a href="/logout/">Logout here</a>
     </div>
     <p>
-      <label class="label">You're logged in as {{.User}}</label>
-      <a href="{{.Host}}/view/urn:cts:sktlit:skt0001.nyaya002.msC3D:3.1.44/">Link to view</a>
+      <label class="label" style="color:white;">You're logged in as {{.User}}</label>
+      <a href="{{.Host}}/view/urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1/">Go to View J1D 3.1.1</a>
+      <br />
+      <a href="{{.Host}}/multicompare/urn:cts:sktlit:skt0001.nyaya002.D1E:3.1.1/">Go to Multicompare D1E 3.1.1</a>
     </p>
   </div>
 
