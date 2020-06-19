@@ -53,7 +53,7 @@ Listening at:7000...
 
 Open a browser of your choice and navigate to:
 
-`localhost:7000/login/](localhost:7000/login/`
+`localhost:7000/login`
 
 > Tip: Bookmark this URL in your browser.
 
