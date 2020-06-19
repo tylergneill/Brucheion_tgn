@@ -152,7 +152,8 @@ would correspond to the following structure within `Brucheion/static/image_archi
 
 > Note: In the Sanskrit projects behind the present description, some pains have been taken to maintain a distinction between CTS URNs and CITE URNs as regards witness sigla. Namely, manuscript sigla, which contain a letter or letters designating the script (D - Devanāgarī, S - Śāradā, ML - Malayalam, etc.), drop this element in the CITE URN. Thus "J1D" in the logically-oriented CTS URNs corresponds to "J1" in the physically-oriented CITE URNs. Thus, an example RDF triple relating the two types of URN reads:
 
-~ urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1#urn:cite2:dse:verbs.v1:appearsOn:#urn:cite2:nbh:J1img.positive:J1_37r
+~~~~ urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1#urn:cite2:dse:verbs.v1:appearsOn:#urn:cite2:nbh:J1img.positive:J1_37r
+~~~~
 
 > The point was to maintain the conceptual distinction between the two types of URNs, but such a distinction is by no means technically necessary here. Note also the difference in the workspace protocol ("skt0001.nyaya002") and the image archive subfolder ("nbh").
 
