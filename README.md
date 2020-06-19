@@ -1,22 +1,25 @@
-See the [original project here](https://github.com/Brucheion/Brucheion) and an [early intro video by developer Thomas Köntges here](https://drive.google.com/file/d/1bV4vTyOK5PtzxIspzLYOFOp_6PVizlZd/view?usp=sharing).
+Project Overview
+-------
 
-In what follows, I detail how I've used Brucheion as a supplementary visualization tool in combination with two other pieces of software: the well-known [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, Python-based [CTE-to-CEX pipeline](https://github.com/tylergneill/cte2cex) (cte2cex).
+This is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), an actively developing project. An early video demo by the developer can be seen [here](https://drive.google.com/file/d/1bV4vTyOK5PtzxIspzLYOFOp_6PVizlZd/view?usp=sharing)).
 
-Data Prep
+In what follows, I detail how I've adaptively used Brucheion as a supplementary visualization tool in combination with two other pieces of software: the well-known [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, Python-based [CTE-to-CEX pipeline](https://github.com/tylergneill/cte2cex) (cte2cex). My own video demo of such usage, including project setup, can be seen [here](...).
+
+Data Prep Prerequisites
 --------
 
 In theory, it's possible to start with nothing but images of one's textual object(s) (e.g., manuscript folia) and proceed to use Brucheion to create text transcriptions, then link those transcriptions to the images or even parts thereof with the program's graphical user interface (GUI). Here, by contrast, is assumed that all transcripts are being prepared elsewhere, and that all image-text relations will be established automatically with the help of the cte2cex conversion tool operating upon the very carefully prepared transcripts.
 
 For the transcripts, CTE encoding is assumed by the cte2cex conversion tool, but plain-text is also ok. These transcripts are also assumed to have very strict formatting, with milestones for both logical and physical transition points. Logical milestones (a.k.a. "chapter identifiers") anticipate CTS URNs (see [here](https://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html) and [here](http://cite-architecture.org/cts/) for background info on the CITE architecture): for example, "3.1.1" for book 1, section 1, verse 1. The format of physical milestones (a.k.a. "object identifiers") is not according to an official standard, but philological practices tend to be fairly similar in this regard: for example, "J1D_102r1" for witness J1D, folio 102, side r, line 1. The exact specifications can be modified as needed.
 
-Images stored locally must be preprocessed through "slicing" to produce Dynamic Zoom Images (DZI) in order for Brucheon to use them. For this, one can use VoidVolker's [MagickSlicer](https://github.com/VoidVolker/MagickSlicer) along with some sort of automation workflow, such as the [Python script here](https://github.com/tylergneill/loop_magick_slicer). See `Image Archive Setup` below for more on how to make the sliced images locally available to Brucheion.
+Images stored locally must (as far as I understand) be preprocessed through "slicing" to produce Dynamic Zoom Images (DZI) in order for Brucheon to use them. For this, one can use VoidVolker's [MagickSlicer](https://github.com/VoidVolker/MagickSlicer) along with some sort of automation workflow, such as the [Python script here](https://github.com/tylergneill/loop_magick_slicer). See `Image Archive Setup` below for more on how to make the sliced images locally available to Brucheion.
 
 For more detail on data prep, see the [cte2cex](https://github.com/tylergneill/cte2cex) instructions.
 
 Installation
 --------
 
-Install this version of Brucheion by simply downloading the repository. Executable (binary) files for macOS and Windows are provided in this fork, and these can hopefully be run directly. If these do not work, one can recompile one's own binary from the Golang file `./brucheion.go` using a command like the following:
+Install this version of Brucheion by simply downloading the repository. Executable (binary) files for macOS and Windows are provided, and these can hopefully be run directly. If they do not work, one can recompile one's own binary from the Golang file `./brucheion.go` using a command like the following:
 
 ~~~~
 env GOOS=windows GOARCH=amd64 go build -v brucheion.go
@@ -33,7 +36,7 @@ go build -v
 Log-in
 ------
 
-> Note: Brucheion has some preliminary online user authentication features meant to help both restrict proprietary data and facilitate team sharing once the software is hosted online. Since this point was not yet reached, these features are bypassed here. In fact, the entire "user" framework is instead repurposed for maintaining multiple project workspaces, as described below.
+> Note: Brucheion has some preliminary online user authentication features meant to help restrict proprietary data and facilitate team sharing once the software is hosted online. I bypass these features here. In fact, the entire "user" framework is instead repurposed for maintaining multiple project workspaces, as described below.
 
 With the executable secured above, start the program, but be careful to bypass the online user authentication by passing in the additional parameter `-noauth true`. In order to do this, it's easiest to launch from the command line, e.g., in macOS (and similarly in Linux):
 
@@ -41,7 +44,7 @@ With the executable secured above, start the program, but be careful to bypass t
 ./Brucheion -noauth true
 ~~~~
 
-> In Windows, this is equally possible with the command line. Otherwise, in order to start by double clicking on an icon while still also bypassing the authorization, it is necessary to first have a shortcut pointing to the .exe file. Then, under this shortcut's Properties menu, in the `Target` field, adding `-noauth true` at the end will cause this parameter to be passed in every time the shortcut is used.
+> In Windows, this is equally possible with the command line. Otherwise, in order to start by double clicking on an icon while still also bypassing the authorization, it is necessary to first have a shortcut pointing to the `.exe` file. Then, under this shortcut's `Properties` menu, in the `Target` field, add `-noauth true` to the end. This will cause this parameter to be passed in every time the shortcut is used.
 
 ![screenshot](...)
 
@@ -61,7 +64,7 @@ The following screen should appear:
 
 ![screenshot](...)
 
-Choose a project here by typing in the name of the desired database, located at the top level of the Brucheion folder, e.g., "01nbh3". If creating a new project, then simply type the new name here. 
+Choose a project here by typing in the name of the desired database, located at the top level of the Brucheion folder, e.g., "01nbh3". If creating a new project, simply type the new name here. 
 
 The next screen confirms the choice. 
 
@@ -73,9 +76,9 @@ The following landing page is very rough.
 
 ![screenshot](...)
 
-In addition to a `Logout` link (with which one can go back and choose a different project), there are a few hard-coded links here allowing access to particular points within particular projects. For now is provided just one of each for the two major visualization modes developed so far: `Passage Overview` and `Multicompare`, for J1D 3.1.1 and D1E 3.1.1, respectively.
+In addition to a `Logout` link (with which one can go back and choose a different project), there are a few hard-coded links here allowing access to particular points within particular projects. For now is provided just one link for each of the two major visualization modes developed so far: `Passage Overview` and `Multicompare` (for J1D 3.1.1 and D1E 3.1.1, respectively).
 
-> Note: Once logged in, closing the command line process prematurely, i.e. without logging out in the browser, currently results in a browser cookie problem. When this happens, find and delete the relevant cookie (e.g., by searching for "localhost" in `chrome://settings/siteData`, then begin again like normal. Always log out before terminating the command line process.
+> Bug Note: Once logged in, closing the command line process prematurely, i.e. without logging out in the browser, currently results in a browser cookie problem. When this happens, find and delete the relevant cookie (e.g., by searching for "localhost" in `chrome://settings/siteData`, then begin again like normal. To avoid this problem, always log out in the browser before terminating the command line process.
 
 For the sake of this tutorial, now click on `Passage Overview`.
 
@@ -136,8 +139,10 @@ In the course of using Brucheion to visualize transcript data, one may make new 
 
 > Note: All nodes in the database for any work mentioned in the CEX file being loaded will be deleted. Then, only those nodes for that work which are mentioned in the CEX file will be reinstated in the database according to the corresponding content in the newly loaded CEX file.
 
+See [separate cte2cex GitHub repo](https://github.com/tylergneill/cte2cex) for more.
+
 Image Archive Setup
-----
+-------
 
 Before using Brucheion, Dynamic Zoom Image (DZI) files are to be placed within the folder `Brucheion/static/image_archive` in a folder sub-structure corresponding to the CITE URN protocol. For example, assuming a project titled "nyaya", with multiple witnesses among which is a "J1", with two versions "positive" and "negative", and with individual folio "37r" and "37v", the following CITE URNs
 
@@ -156,24 +161,24 @@ would correspond to the following structure within `Brucheion/static/image_archi
 urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1#urn:cite2:dse:verbs.v1:appearsOn:#urn:cite2:nbh:J1img.positive:J1_37r
 ~~~~
 
-> The point was to maintain the conceptual distinction between the two types of URNs, but such a distinction is by no means technically necessary here. Note also the difference in the workspace protocol ("skt0001.nyaya002") and the image archive subfolder ("nbh").
+> The point was to maintain the conceptual distinction between the two types of URNs, but such a distinction is by no means technically necessary here. Note also the similar difference in the workspace protocol ("skt0001.nyaya002") and the image archive subfolder ("nbh").
 
 The images are now ready to be found by Brucheion.
 
-Understanding CEX
+CEX Setup
 -----
 
-All text material for a given project to be visualized in Brucheion is consolidated into a single .cex file, which becomes the basis for the .db Bolt database file. A CEX file, as used here (further detail can be found [here](...)), is comprised of five blocks of data:
+All text material for a given project to be visualized in Brucheion is consolidated into a single CEX (`.cex`) file, which becomes the basis for the Bolt database (`.db`) file. A CEX file, as used here (further detail can be found [here](...)), is comprised of three blocks of data:
 
-* `#!ctscatalog`: defines which witnesses are considered in a given project.
+* `#!ctscatalog`: defines which witnesses are involved in a given project.
 
 * `#!ctsdata`: the actual textual data, formatted in two columns with hashtag (#) as a  separator
 
-* `#!relations`: here, just relationships between image and text, expressed as RDF triples
+* `#!relations`: here, just text-to-image relationships, expressed as RDF triples (e.g., "(text x) (appears on) (image y)")
 
 If building a new project from scratch for use with such a protocol, it takes considerable effort to transform one's textual data into this format. Firstly, one must already have segmented one's text into reasonably sized portions, each with its own CTS identifier, and this must be marked clearly in the transcription data itself. Next, all non-plain-text content (font formatting, XML tags, etc.) must be filtered out somehow; here, the cte2cex pipeline is used. 
 
-> Note: A special provision is made for line breaks ("-NEWLINE-") and folio breaks (e.g., "J1D_37r1"). The former tag is provided for within the Golang code-base itself.
+> Note: A special provision is made here for line breaks ("-NEWLINE-") and folio breaks (e.g., "J1D_37r1"). The former tag is provided for within the Brucheion Golang code-base itself.
 
 Finally, one must actually compose the CEX file itself, with proper formatting (i.e., proper use of blocks and separators, etc.) For developing a new project, therefore, it's best to simply copy an existing project and make changes as necessary.
 
@@ -185,7 +190,7 @@ The `#!relations` block is used here to prepopulate the database with relations 
 
 Namely, once one's transcript data consistently marks both chapter and object identifiers with consistent formatting, it is then merely a mechanical matter to extract a linear sequence of such identifiers, on the one hand, and textual content, on the other, and then from this sequence, one can further mechanically build a table of paired identifiers, which then simply needs to be formatted as RDF triplets (here: chapter-verb-object) which can then be incorporated directly into the CEX file. It's also possible to use the `Image References Editor` within the GUI to specify individual relations, even to the level of parts of images, but that is not used here.
 
-Finally, it is only if it is placed in the `Brucheion/cex` folder that a CEX file is able to be found by the Brucheion `load` call.
+Finally, a CEX file must be placed in the `Brucheion/cex` folder in order for the `load` call to find it.
 
 Quick Run-Down of Features Not Utilized
 ----------
