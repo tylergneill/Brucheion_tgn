@@ -5,13 +5,13 @@ In what follows, I detail how I've used Brucheion as a supplementary visualizati
 Data Prep
 --------
 
-In theory, it's possible to start with nothing but images of one's textual object(s) (e.g., manuscript folia) and proceed to use Brucheion to create text transcriptions, then link those transcriptions to the images or even parts thereof. Here is assumed that transcripts are being prepared elsewhere, and that all image-text relations will be established automatically with the help of the cte2cex conversion tool and properly prepared transcripts.
+In theory, it's possible to start with nothing but images of one's textual object(s) (e.g., manuscript folia) and proceed to use Brucheion to create text transcriptions, then link those transcriptions to the images or even parts thereof with the program's graphical user interface (GUI). Here, by contrast, is assumed that all transcripts are being prepared elsewhere, and that all image-text relations will be established automatically with the help of the cte2cex conversion tool operating upon the very carefully prepared transcripts.
 
-For the transcripts, CTE encoding is assumed by the cte2cex conversion tool, but plain-text is also ok. These transcripts are also assumed to have very strict formatting, with milestones for both logical and physical transition points. Logical milestones anticipate CTS URNs (see [here](https://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html) and [here](http://cite-architecture.org/cts/) for background info on the CITE architecture): for example, "3.1.1". The format of physical milestones is not according to an official standard but is familiar: for example, "J1D_102r1".
+For the transcripts, CTE encoding is assumed by the cte2cex conversion tool, but plain-text is also ok. These transcripts are also assumed to have very strict formatting, with milestones for both logical and physical transition points. Logical milestones (a.k.a. "chapter identifiers") anticipate CTS URNs (see [here](https://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html) and [here](http://cite-architecture.org/cts/) for background info on the CITE architecture): for example, "3.1.1" for book 1, section 1, verse 1. The format of physical milestones (a.k.a. "object identifiers") is not according to an official standard, but philological practices tend to be fairly similar in this regard: for example, "J1D_102r1" for witness J1D, folio 102, side r, line 1. The exact specifications can be modified as needed.
 
-Images must be preprocessed through "slicing" to produce dynamic zoom images (DZI). For this, I used VoidVolker's [MagickSlicer](https://github.com/VoidVolker/MagickSlicer) along with a [simple automation script](https://github.com/tylergneill/loop_magick_slicer). See `Image Archive Setup` below for how to make sliced images locally available to Brucheion.
+Images stored locally must be preprocessed through "slicing" to produce Dynamic Zoom Images (DZI) in order for Brucheon to use them. For this, one can use VoidVolker's [MagickSlicer](https://github.com/VoidVolker/MagickSlicer) along with some sort of automation workflow, such as the [Python script here](https://github.com/tylergneill/loop_magick_slicer). See `Image Archive Setup` below for more on how to make the sliced images locally available to Brucheion.
 
-For more detail, see the [cte2cex](https://github.com/tylergneill/cte2cex) instructions.
+For more detail on data prep, see the [cte2cex](https://github.com/tylergneill/cte2cex) instructions.
 
 Installation
 --------
@@ -28,12 +28,12 @@ or just
 go build -v
 ~~~~
 
-(Tips for recompiling: 1) Get the latest version of Golang [here](https://golang.org/doc/install). 2) Adjust the environment variables as needed. 3) Don't forget the `-v` flag.)
+> Tips for recompiling: 1) Get the latest version of Golang [here](https://golang.org/doc/install). 2) Adjust the environment variables as needed. 3) Don't forget the `-v` flag.
 
 Log-in
 ------
 
-> (Note: Brucheion has some preliminary online user authentication features meant to help both restrict proprietary data and facilitate team sharing once the software is hosted online. Since this point was not yet reached, these features are bypassed here. In fact, the entire "user" framework is instead repurposed for maintaining multiple project workspaces, as described below.)
+> Note: Brucheion has some preliminary online user authentication features meant to help both restrict proprietary data and facilitate team sharing once the software is hosted online. Since this point was not yet reached, these features are bypassed here. In fact, the entire "user" framework is instead repurposed for maintaining multiple project workspaces, as described below.
 
 With the executable secured above, start the program, but be careful to bypass the online user authentication by passing in the additional parameter `-noauth true`. In order to do this, it's easiest to launch from the command line, e.g., in macOS (and similarly in Linux):
 
@@ -53,7 +53,7 @@ Listening at:7000...
 
 Open a browser of your choice and navigate to:
 
-[localhost:7000/login/](localhost:7000/login/)
+`localhost:7000/login/](localhost:7000/login/`
 
 > Tip: Bookmark this URL in your browser.
 
