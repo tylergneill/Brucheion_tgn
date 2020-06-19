@@ -53,7 +53,7 @@ Listening at:7000...
 
 Open a browser of your choice and navigate to:
 
-`localhost:7000/login`
+`localhost:7000/login/`
 
 > Tip: Bookmark this URL in your browser.
 
@@ -67,7 +67,7 @@ The next screen confirms the choice.
 
 ![screenshot](...)
 
-Click `Forward to Mainpage`. 
+Now click `Forward to Mainpage`. 
 
 The following landing page is very rough. 
 
@@ -113,11 +113,11 @@ For this alignment, lemmata selection — here: chunking by entire words or grou
 
 There is also an option to instead align and view orthographically normalized transcription text, which can help direct attention to more significant variants. This feature, which works by way of regular expressions, is currently available by API call only. The command can be entered in the browser (e.g., another tab) or via the command line (e.g., with curl):
 
-[localhost:7000/normalizeAndSave/all](localhost:7000/normalizeAndSave/all)
+`localhost:7000/normalizeAndSave/all/`
 
 > Tip: Bookmark this URL.
 
-> Note: This command (re)-normalizes the entire database at once. There also exists an alternative API endpoint [localhost:7000/normalizeTemporarily/](localhost:7000/normalizeTemporarily/), which requires a full CTS URN (e.g. [localhost:7000/normalizeTemporarily/urn:cts:sktlit:skt0001.nyaya002.C3D:3.1.1/](localhost:7000/normalizeTemporarily/urn:cts:sktlit:skt0001.nyaya002.C3D:3.1.1/)), which does not save and so can be used for testing. Options for toggling normalization and/or specifying a different set of (e.g., language- or dialect-specific) regular expressions can be managed in the file `config.json`.
+> Note: This command (re)-normalizes the entire database at once. There also exists an alternative API endpoint `localhost:7000/normalizeTemporarily/`, which requires a full CTS URN (e.g. `localhost:7000/normalizeTemporarily/urn:cts:sktlit:skt0001.nyaya002.C3D:3.1.1/`), which does not save and so can be used for testing. Options for toggling normalization and/or specifying a different set of (e.g., language- or dialect-specific) regular expressions can be managed in the file `config.json`.
 
 Once orthographic normalization has been performed, whether this or the original text is displayed in Multicompare is controlled by a toggle in the Brucheion `config.json` file.
 
