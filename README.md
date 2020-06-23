@@ -96,20 +96,26 @@ For the sake of this tutorial, one should first load a database from a CEX file.
 |nbh_5_mss.cex											|09nbh5mss|
 |nbh_3_mss_and_nbh_4_mss_incomplete_and_nbh_5_mss.cex	|10nbh3mssAndNbh4mssIncompleteAndNbh5mss|
 
-To load, for example, the first of these CEX files manually (as opposed to with the help of cte2cex, see which), while logged into project `01nbh3mss`, enter as a URL in a new tab:
+To load, for example, the first of these CEX files manually (as opposed to with the help of cte2cex, see which), while logged into project `01nbh3mss`, and with the CEX in their proper folder (`Brucheion/cex`) enter the following URL in a new tab:
 
-`http://localhost:7000/load/nbh_3_mss`
+`localhost:7000/load/nbh_3_mss`
 
-A "success" message in that tab should confirm the load. Navigate back to the landing page.
+A "success" message in that tab should confirm the load. Since we are loading manually, we should also do the same with the URL:
 
-For the sake of this tutorial, now click on `Passage Overview`.
+`localhost:7000/newCITECollection/urn:cite2:nyaya:J2img.positive:/
+
+> For more on this, see `(Initialize Image Database)` in "Features available only as endpoints" below.
+
+Now navigate back to the landing page.
+
+For the sake of this tutorial, proceed by clicking on `Passage Overview`.
 
 Passage Overview Mode
 ---------
 
-![screenshot](static/img/tutorial_fork/Passage_Overview.png)
-
 This is the image-to-text alignment mode.
+
+![screenshot](static/img/tutorial_fork/Passage_Overview.png)
 
 Here the object image is front-and-center. The image viewer has buttons for zoom, and moving is possible with click-and-drag, or else one can also simply use the trackpad. There are also simple, temporary shape drawing features like lines and boxes.
 
@@ -130,13 +136,17 @@ For now, under `Tools`, choose `Multicompare` to go to the other of the main two
 Multicompare Mode
 --------
 
-This is the many-to-one text alignment mode.
+This is the one-to-many text alignment mode.
 
-![screenshot](static/img/tutorial_fork/multicompare_default.png)
+![screenshot](static/img/tutorial_fork/multicompare_default_empty.png)
 
 Here, a base text appears on the lefthand side, and a blank space appears on the righthand side where other witnesses will be aligned. As in `Passage Overview` mode, the overall passage focus can be changed with the arrow buttons. The adjacent witness dropdown box, by contrast, has a slightly different function here: It specifically determines the base text on the *lefthand* side. Below the dropdown box appear several white buttons that can in turn be used to select (by simple siglum) a second witness for alignment on the *righthand* side.
 
-Once selected, the second witness appears on the righthand side, complete with interactive alignment. Yellow color in the base text on the lefthand side  reflects *total, overall* variation in *all witnesses* relative to the base text. Green color in the aligned text on the righthand side indicates *specific* variation in *only that witness* relative to the base text.
+Once selected, the second witness appears on the righthand side, complete with interactive alignment. 
+
+![screenshot](static/img/tutorial_fork/multicompare_default_full.png)
+
+Yellow color in the base text on the lefthand side  reflects *total, overall* variation in *all witnesses* relative to the base text. Green color in the aligned text on the righthand side indicates *specific* variation in *only that witness* relative to the base text.
 
 For this alignment, the lemmata selection — here: chunking by entire words or groups thereof — is currently only automatic (based on an implementation of the Needleman-Wunsch algorithm) and cannot be altered.
 
