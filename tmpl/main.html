@@ -12,15 +12,30 @@
 
 <section class="hero is-fullheight is-primary" style="background-color: #017BAC;">
   <div class="hero-body">
+
     <div class="container has-text-centered">
-      <a href="/logout/">Logout here</a>
+      <p>
+        <label class="label" style="color:white;">Logged in as {{.User}}</label>
+        <a href="{{.Host}}/view/urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1/">Go to Passage Overview, J1D 3.1.1</a>
+        <br />
+        <a href="{{.Host}}/multicompare/urn:cts:sktlit:skt0001.nyaya002.D1E:3.1.1/">Go to Multicompare, D1E 3.1.1</a>
+        <br />
+        <br />
+        <a href="{{.Host}}/view/urn:cts:sktlit:skt0001.nyaya002.J1D:4.1.1/">Go to Passage Overview, J1D 4.1.1</a>
+        <br />
+        <a href="{{.Host}}/multicompare/urn:cts:sktlit:skt0001.nyaya002.D1E:4.1.1/">Go to Multicompare, D1E 4.1.1</a>
+        <br />
+        <br />
+        <a href="{{.Host}}/view/urn:cts:sktlit:skt0001.nyaya002.J2D:5.1.1/">Go to Passage Overview, J2D 5.1.1</a>
+        <br />
+        <a href="{{.Host}}/multicompare/urn:cts:sktlit:skt0001.nyaya002.D1E:5.1.1/">Go to Multicompare, D1E 5.1.1</a>
+      </p>
     </div>
-    <p>
-      <label class="label" style="color:white;">You're logged in as {{.User}}</label>
-      <a href="{{.Host}}/view/urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1/">Go to View J1D 3.1.1</a>
-      <br />
-      <a href="{{.Host}}/multicompare/urn:cts:sktlit:skt0001.nyaya002.D1E:3.1.1/">Go to Multicompare D1E 3.1.1</a>
-    </p>
+
+    <div class="container has-text-centered">
+      <a href="/logout/"><label class="label" style="color:white;">Log out here</label></a>
+    </div>
+
   </div>
 
   <div class="hero-foot">

@@ -22,11 +22,11 @@
             <div class="box">
               <form action="/login/" method="POST" novalidate>
                 {{ if .NoAuth }}
-                <label class ="label">Started in noAuth mode.</br>Choose the username you want to use in Brucheion.</br>Must not be in use with a provider login.</label>
+                <label class ="label">Started in noAuth mode for project use.</br></label>
                 {{ if .Message }}
                 <p class="error">{{ .Message }}</p>
                 {{ end }}
-                <label class="label">User name</label>
+                <label class="label">Choose project (database name):</label>
                 <p class="control">
                   <input class="input" type="text" name="brucheionusername" placeholder="●●●●●●●">
                 </p>
@@ -51,16 +51,11 @@
                   </select>
                 </p>
                 {{ end }}
-                <br>
                 <p class="control">
                   <button class="button is-primary" style="background-color: #017BAC;"type="submit">Login</button>
-                  <button class="button is-default">Cancel</button>
                 </p>
               </form>
             </div>
-            <p class="has-text-centered">
-              <a href="#">Need help?</a>
-            </p>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ func validateUserName(username string) *Validation {
 	log.Println("func validateUserName: Validating: " + username)
 	if strings.TrimSpace(username) == "" { //form was left blank
 		log.Println("Username was left blank")
-		unameValidation.Message = "Please enter a username." //the message will be displayed on the login page
+		unameValidation.Message = "Please enter a project name." //the message will be displayed on the login page
 		return unameValidation
 	} else if !matched { //illegal characters were used
 		log.Println("Username contained illegal characters")
@@ -110,11 +110,11 @@ func validateNoAuthUser(req *http.Request) (*Validation, error) {
 		} else if bUserValidation.BUserInUse && !bUserValidation.BPAssociation { //if the user was found in the user bucket but not in a provider bucket Scenario (2)
 			//log.Println("Scenario (2)")
 			bUserValidation.ErrorCode = true
-			bUserValidation.Message = "NoAuth user " + brucheionUserName + " found. Logged in."
+			bUserValidation.Message = "Project" + brucheionUserName + " found. Logged in."
 		} else if !bUserValidation.BUserInUse && !bUserValidation.BPAssociation { //if the user was not found in the user bucket and neither in a provider bucket Scenario (3)
 			//log.Println("Scenario (3)")
 			bUserValidation.ErrorCode = true
-			bUserValidation.Message = "New noAuth user " + brucheionUserName + " created. Logged in."
+			bUserValidation.Message = "New project " + brucheionUserName + " created. Logged in."
 		}
 
 		return nil //close DB view without an error

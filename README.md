@@ -1,70 +1,68 @@
 Project Overview
 -------
 
-This is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), an actively developing project. An early video demo by the developer can be seen [here](https://drive.google.com/file/d/1bV4vTyOK5PtzxIspzLYOFOp_6PVizlZd/view?usp=sharing)).
-
-In what follows, I detail how I've adaptively used Brucheion as a supplementary visualization tool in combination with two other pieces of software: the well-known [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, Python-based [CTE-to-CEX pipeline](https://github.com/tylergneill/cte2cex) (cte2cex). My own video demo of such usage, including project setup, can be seen [here](...).
+This is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”. In this fork, only such small changes to the code were made as were necessary to accomodate my own divergent, limited use of an intermediate stage of Brucheion (2019 – early 2020) as only a *supplementary visualization* tool in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (cte2cex). This was done in the context of research on Sanskrit material, specifically.
 
 Data Prep Prerequisites
 --------
 
-In theory, it's possible to start with nothing but images of one's textual object(s) (e.g., manuscript folia) and proceed to use Brucheion to create text transcriptions, then link those transcriptions to the images or even parts thereof with the program's graphical user interface (GUI). Here, by contrast, is assumed that all transcripts are being prepared elsewhere, and that all image-text relations will be established automatically with the help of the cte2cex conversion tool operating upon the very carefully prepared transcripts.
+In the future Brucheion VRE, it should become possible to start with nothing but images of one's textual object(s) (e.g., manuscript folia) and then proceed immediately to ingest those images into the VRE, create text transcriptions of them, and link the transcriptions to the images or even parts thereof, all within the program's graphical user interface (GUI).
 
-For the transcripts, CTE encoding is assumed by the cte2cex conversion tool, but plain-text is also ok. These transcripts are also assumed to have very strict formatting, with milestones for both logical and physical transition points. Logical milestones (a.k.a. "chapter identifiers") anticipate CTS URNs (see [here](https://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html) and [here](http://cite-architecture.org/cts/) for background info on the CITE architecture): for example, "3.1.1" for book 1, section 1, verse 1. The format of physical milestones (a.k.a. "object identifiers") is not according to an official standard, but philological practices tend to be fairly similar in this regard: for example, "J1D_102r1" for witness J1D, folio 102, side r, line 1. The exact specifications can be modified as needed.
+In the different workflow which this fork accommodates, by contrast, images are prepared and added to Brucheion manually, transcripts are prepared elsewhere (either in CTE or in plain-text), and image-text relations are established automatically by the cte2cex conversion tool on the basis of the carefully prepared transcripts. Prepared Sanskrit data is available at the following locations:
 
-Images stored locally must (as far as I understand) be preprocessed through "slicing" to produce Dynamic Zoom Images (DZI) in order for Brucheon to use them. For this, one can use VoidVolker's [MagickSlicer](https://github.com/VoidVolker/MagickSlicer) along with some sort of automation workflow, such as the [Python script here](https://github.com/tylergneill/loop_magick_slicer). See `Image Archive Setup` below for more on how to make the sliced images locally available to Brucheion.
+Nyāyabhāṣya "sliced" (DZI) image files: [https://gitlab.com/dfg_nbh/nbh](https://gitlab.com/dfg_nbh/nbh) (private)
 
-For more detail on data prep, see the [cte2cex](https://github.com/tylergneill/cte2cex) instructions.
+Nyāyabhāṣya CEX project files: [https://gitlab.com/dfg_nbh/cex](https://gitlab.com/dfg_nbh/cex)
+
+For more detail on getting this data set up for use, see the "Image Archive Setup" and "CEX Setup" sections below.
 
 Installation
 --------
 
-Install this version of Brucheion by simply downloading the repository. Executable (binary) files for macOS and Windows are provided, and these can hopefully be run directly. If they do not work, one can recompile one's own binary from the Golang file `./brucheion.go` using a command like the following:
-
-~~~~
-env GOOS=windows GOARCH=amd64 go build -v brucheion.go
-~~~~
-
-or just
+Install this version of Brucheion by simply downloading the repository. Executable (binary) files for macOS and Windows are provided, and these can hopefully be run directly. If they do not work, one can recompile one's own binary for the system one is currently running with 
 
 ~~~~
 go build -v
 ~~~~
 
-> Tips for recompiling: 1) Get the latest version of Golang [here](https://golang.org/doc/install). 2) Adjust the environment variables as needed. 3) Don't forget the `-v` flag.
+or for another system with a command like
 
-Log-in
+~~~~
+env GOOS=windows GOARCH=amd64 go build -v brucheion.go
+~~~~
+
+> Tips for recompiling: 1) First install the latest version of Golang [here](https://golang.org/doc/install). 2) Install any required packages that appear in the build error message. 3) Adjust the environment variables as needed if building for other operating systems. 3) Don't forget the `-v` flag.
+
+Start-up and Log-in
 ------
 
-> Note: Brucheion has some preliminary online user authentication features meant to help restrict proprietary data and facilitate team sharing once the software is hosted online. I bypass these features here. In fact, the entire "user" framework is instead repurposed for maintaining multiple project workspaces, as described below.
+With this fork, in a major divergence from Brucheion's intended "user"-based, online collaboration framework, online authentication features are bypassed and the "user" functionality is entirely repurposed for the sake of local management of multiple project workspaces.
 
-With the executable secured above, start the program, but be careful to bypass the online user authentication by passing in the additional parameter `-noauth true`. In order to do this, it's easiest to launch from the command line, e.g., in macOS (and similarly in Linux):
+To start the program with the authentication bypass, pass in the additional parameter `-noauth true`. In order to do this, it's easiest to launch from the command line, e.g., in macOS (and similarly in Linux):
 
 ~~~~
 ./Brucheion -noauth true
 ~~~~
 
-> In Windows, this is equally possible with the command line. Otherwise, in order to start by double clicking on an icon while still also bypassing the authorization, it is necessary to first have a shortcut pointing to the `.exe` file. Then, under this shortcut's `Properties` menu, in the `Target` field, add `-noauth true` to the end. This will cause this parameter to be passed in every time the shortcut is used.
+> Tip: In Windows, this is equally possible with the command line. Otherwise, in order to start by double clicking on an icon while still also bypassing the authorization, it is necessary to first have a shortcut point to the `.exe` file, and then, under this shortcut's `Properties` menu, to add `-noauth true` to the end of the `Target` field. This will cause the parameter to be passed in every time the shortcut is used.
 
 ![screenshot](...)
 
-You should then see the command line provide a status update like:
+If start-up was successful, the command line will provide the following status update:
 
 ~~~~
 Listening at:7000...
 ~~~~
 
-Open a browser of your choice and navigate to:
+Now open a browser of your choice and navigate to:
 
 `localhost:7000/login/`
 
 > Tip: Bookmark this URL in your browser.
 
-The following screen should appear:
-
 ![screenshot](...)
 
-Choose a project here by typing in the name of the desired database, located at the top level of the Brucheion folder, e.g., "01nbh3". If creating a new project, simply type the new name here. 
+At this screen, choose a project by typing in the name that will match the corresponding database (`.db`) file located at the top level of the Brucheion folder (e.g., "01nbh3" to pick out `01nbh3.db`). If creating a new project, simply type the new name here.
 
 The next screen confirms the choice. 
 
@@ -72,13 +70,32 @@ The next screen confirms the choice.
 
 Now click `Forward to Mainpage`. 
 
-The following landing page is very rough. 
+The following landing page is very rough, with a few hard-coded links allowing access to particular points within particular projects. 
 
 ![screenshot](...)
 
-In addition to a `Logout` link (with which one can go back and choose a different project), there are a few hard-coded links here allowing access to particular points within particular projects. For now is provided just one link for each of the two major visualization modes developed so far: `Passage Overview` and `Multicompare` (for J1D 3.1.1 and D1E 3.1.1, respectively).
+Any valid URL endpoint within the chosen project will suffice for getting into the GUI, but since Brucheion was developed in the context of the DFG project at Leipzig focusing on Nyāyabhāṣya chapters (*adhyāya*s) 3–5, here, two links are provided specifically for each of these three chapters, in particular, one for each the two major visualization modes developed so far: `Passage Overview` and `Multicompare`. For other projects (e.g., my own dissertation research on the Nyāyabhūṣaṇa), one can in turn rely solely on browser bookmarks. Finally, there is also a `Log out` link, with which one can go back and choose a different project. 
 
-> Bug Note: Once logged in, closing the command line process prematurely, i.e. without logging out in the browser, currently results in a browser cookie problem. When this happens, find and delete the relevant cookie (e.g., by searching for "localhost" in `chrome://settings/siteData`, then begin again like normal. To avoid this problem, always log out in the browser before terminating the command line process.
+> Bug Note: Once logged in, closing the command line process prematurely, i.e. without logging out in the browser, currently results in a browser cookie problem. When this happens, find and delete the relevant cookie (e.g., by searching for "localhost" in `chrome://settings/siteData`, then begin again like normal. To avoid this problem, always log out in the browser before terminating the command line process. This problem has already been fixed in the main, official version of Brucheion and should eventually be fixed here, too.
+
+Loading a database
+---------
+
+For the sake of this tutorial, one should first load a database from a CEX file. The provided CEX files are intended to be loaded as the following databases:
+
+|CEXfile												|databasename|
+|-------------------------------------------------------|---------------------------------------|
+|nbh_3_mss.cex											|01nbh3mss|
+|nbh_3_pr_eds.cex										|02nbh3prEds|
+|nbh_3_jaisalmer.cex									|03nbh3jaisalmer|
+|nbh_3_test_collation.cex								|04nbh3testCollation|
+|nbh_4_mss_incomplete.cex								|05nbh4mssIncomplete|
+|nbh_4_pr_eds_incomplete.cex							|06nbh4prEdsIncomplete|
+|nbh_3_mss_and_4_mss_incomplete.cex						|07nbh3mssAndNbh4mssIncomplete|
+|nbh_3_pr_eds_and_nbh_4_pr_eds_incomplete.cex			|08nbh3prEdsAndNbh4prEdsIncomplete|
+|nbh_5_mss.cex											|09nbh5mss|
+|nbh_3_mss_and_nbh_4_mss_incomplete_and_nbh_5_mss.cex	|10nbh3mssAndNbh4mssIncompleteAndNbh5mss|
+
 
 For the sake of this tutorial, now click on `Passage Overview`.
 
@@ -137,36 +154,41 @@ Updating with cte2cex Conversion Pipeline
 
 In the course of using Brucheion to visualize transcript data, one may make new discoveries, and it may become necessary to make changes to that textual data in the primary files (e.g., CTE, txt). In order to update Brucheion with the new changes, first one should be logged into the desired project. While logged in, go to the command line and run the cte2cex conversion script for the given project (i.e., with the project JSON file) along with the `-u` flag in order to update the database by overwriting it with the re-imported transcript data. The reloading of the new cex data into the database will produce a new tab in the browser confirming the operation. If the orthography normalization option in the cte2cex project config file is selected, this will also be redone at this time, again in its own new tab.
 
-> Note: All nodes in the database for any work mentioned in the CEX file being loaded will be deleted. Then, only those nodes for that work which are mentioned in the CEX file will be reinstated in the database according to the corresponding content in the newly loaded CEX file.
-
 See [separate cte2cex GitHub repo](https://github.com/tylergneill/cte2cex) for more.
 
 Image Archive Setup
 -------
 
-Before using Brucheion, Dynamic Zoom Image (DZI) files are to be placed within the folder `Brucheion/static/image_archive` in a folder sub-structure corresponding to the CITE URN protocol. For example, assuming a project titled "nyaya", with multiple witnesses among which is a "J1", with two versions "positive" and "negative", and with individual folio "37r" and "37v", the following CITE URNs
+Images used with this fork are preprocessed by "tiling" or "slicing" them to produce Dynamic Zoom Images (DZI). For this, one can use Image Magick, VoidVolker's [MagickSlicer](https://github.com/VoidVolker/MagickSlicer), and some sort of automation workflow (see, e.g., [my own simple Python script here](https://github.com/tylergneill/loop_magick_slicer)). All sliced images for the DFG Nyāyabhāṣya project are currently available in a [private GitLab repo](https://gitlab.com/dfg_nbh/nbh).
+
+In order for these sliced images to be found and used by Brucheion, they must here be manually placed within the folder `Brucheion/static/image_archive` in a nested folder sub-structure corresponding to the CITE URN protocol. For example, assuming an archive titled "nbh", with multiple witnesses among which is a "J1", with two versions "positive" and "negative", and with individual folios "37r" and "37v", the following CITE URNs
 
 ~~~~
-urn:cite2:nyaya:J1img.positive:J1_37r
-urn:cite2:nyaya:J1img.negative:J1_37v
+urn:cite2:nbh:J1img.positive:J1_37r
+urn:cite2:nbh:J1img.negative:J1_37v
 ~~~~
 
 would correspond to the following structure within `Brucheion/static/image_archive`
 
 ![screenshot](...)
 
-> Note: In the Sanskrit projects behind the present description, some pains have been taken to maintain a distinction between CTS URNs and CITE URNs as regards witness sigla. Namely, manuscript sigla, which contain a letter or letters designating the script (D - Devanāgarī, S - Śāradā, ML - Malayalam, etc.), drop this element in the CITE URN. Thus "J1D" in the logically-oriented CTS URNs corresponds to "J1" in the physically-oriented CITE URNs. Thus, an example RDF triple relating the two types of URN reads:
+> Note: In the Sanskrit projects behind the present description, some pains have been taken to maintain a distinction between (logical) CTS URNs and (object) CITE URNs as regards witness sigla. Namely, manuscript sigla, which contain a letter or letters designating the script (D - Devanāgarī, S - Śāradā, ML - Malayalam, etc.), drop this element in the CITE URN. Thus "J1D" in the logically-oriented CTS URNs corresponds to "J1" in the physically-oriented CITE URNs. Thus, an example RDF triple relating the two types of URN reads:
 
 ~~~~ 
 urn:cts:sktlit:skt0001.nyaya002.J1D:3.1.1#urn:cite2:dse:verbs.v1:appearsOn:#urn:cite2:nbh:J1img.positive:J1_37r
 ~~~~
 
-> The point was to maintain the conceptual distinction between the two types of URNs, but such a distinction is by no means technically necessary here. Note also the similar difference in the workspace protocol ("skt0001.nyaya002") and the image archive subfolder ("nbh").
+> Note also the similar difference in the workspace protocol ("skt0001.nyaya002") and the image archive name ("nbh"). The point here is a didactic one: to maintain the conceptual distinction between the two types of URNs. Such a distinction, however, is by no means technically necessary.
 
-The images are now ready to be found by Brucheion.
+Once positioned in this way, images are now ready for Brucheion to find and associate with text, whether through the Image Citation Editor (not used here, see below) or through relations imported in the CEX file.
 
 CEX Setup
 -----
+
+Transcripts can be prepared either in CTE (as in the DFG Nyāyabhāṣya project) or in plain-text (my own dissertation research on the Nyāyabhūṣaṇa); the associated cte2cex conversion tool accepts both. More importantly, these transcripts must have rather strict formatting, including milestones for both logical and physical transition points. Logical milestones (a.k.a. "chapter" or "passage identifiers") anticipate CTS URNs (see [here](https://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html) and [here](http://cite-architecture.org/cts/) for background info on the CITE architecture): for example, "3.1.1" for book 1, section 1, verse 1 in the Nyāyabhāṣya. The format of physical milestones (a.k.a. "object identifiers" or more simply folio/page and line breaks) is assumed by cte2cex to consist of a "siglum" abbreviation of the source plus other material (e.g., "J1D_102r1", for witness J1D, folio 102, side r, line 1). For more on these specifications, see cte2cex's [input guidelines](https://github.com/tylergneill/cte2cex/blob/master/input_guidelines.md).
+
+
+
 
 All text material for a given project to be visualized in Brucheion is consolidated into a single CEX (`.cex`) file, which becomes the basis for the Bolt database (`.db`) file. A CEX file, as used here (further detail can be found [here](...)), is comprised of three blocks of data:
 
@@ -192,39 +214,42 @@ Namely, once one's transcript data consistently marks both chapter and object id
 
 Finally, a CEX file must be placed in the `Brucheion/cex` folder in order for the `load` call to find it.
 
-Quick Run-Down of Features Not Utilized
+Features available only as endpoints
 ----------
 
-* Image Reference Editor: for associating images or parts of images with text content.
+* `(Load CEX)`: for ingesting CEX data; creates or overwrites internal Bolt database (`.db`), which is stored at top level of Brucheion directory; endpoint shape: `load/{cex}/`
 
-	> Tip: To associate an image (or a part of an image) with some chunk of text, execute the following steps:
-	1. Clear the `ImageRef` box on the right. (This will likely be changed later; if not cleared, since new additions come along with a `#` after themselves, the first addition will collide with the default contents of the box.)
-	2. Choose the desired folio by entering its CITE URN into the `Change Image` box. Currently, this must be entered manually.
-	3. Activate the image area selector box by clicking the far-right button in the accompanying image viewer (the one with a square icon). You can also activate and/or deactivate this by pressing `c` on the keyboard.
-	4. Draw and adjust a selection box, then click on the checkmark to accept.
-	5. After accepting, add the selected region to the list of associated images for the locus by clicking on the green `+` button next to the image-coordinate-containing URN that has been created above.
-	6. Save this reference addition to the list by clicking `Save`.
+> Note: For any work mentioned in the CEX file being loaded, all associated nodes already existing in the database will be deleted. Then, the individual nodes mentioned in said CEX file will be reinstated in the database with their newly loaded content.
 
-* Transcription Comparison (and Alignment): view and modify alignment of two (perhaps later up to four) parallel versions of text
+* `(Initialize Image Database)`: for creating a internal to manage available image files; must be done once for each newly created project (main Brucheion: "user") database; endpoint shape: `newCITECollection/{urn}`
 
-	> Tip: To access this mode, construct a URL as follows, taking as a reference point a "view" URL: replace "view" with "compare" and add after the text URN a plus sign + and then a second, different text URN where parallel text is expected. E.g.: 
+> Note: Any URN will work, but then it will be the "Collection" name that appears in, for example, `Image Citation Editor`, see more on which below.
 
-	~~~~
-	http://localhost:7000/tyler/compare/urn:cts:sktlit:skt0001.nyaya002.msTML:3.1.36+urn:cts:sktlit:skt0001.nyaya002.msM3D:3.1.36
-	~~~~
+User-facing features not utilized here
+----------
 
-	> More Tips:
-	* Hover over words to see current alignment pairings.
-	* Word-level alignment is initialized automatically using an implementation of the Needleman-Wunsch algorithm. Single click first on a word in one text and then on a corresponding word in another text to re-associate them as an alignment pair.
-	* Double click on a given token to declare it as not corresponding to anything in the other text(s).
-	* Changes cannot yet be saved.
+* `Edit Metadata`: for editing catalog data (corresponding to `#!ctscatalog` block of CEX file) in Brucheion's internal Bolt database
 
-* Transcription Consolidation: similar to the above, but meant for choosing between competing transcriptions.
+* `Transcription Desk`: for creating and editing transcription data (corresponding to `#!ctsdata` block of CEX file) for storage in Brucheion's internal Bolt database; currently features a toggle between horizontal and vertical orientations
 
-	> Tip: This mode is probably not being further developed. To access it anyway, construct a URL similar to "compare" above, with "consolidate" in place of "compare".
+* `Image Citation/(Reference) Editor`: for creating and editing text-to-image relation data (corresponding to `#!relations` block of CEX file) in Brucheion's internal Bolt database; usage involves building and saving a `#`-separated list of CITE URN object references in the `ImageRef` box on the right with the help of the controls on the left (viewer plug-in — which also facilitates specifying subparts of images — as well as dropdown menus, among which "Select Image" currently seem unable to give access any individual items)
 
-	> More Tips:
+* `Download CEX`: for exporting internal Bolt database as a single CEX file; output not yet round-trip compatible with `load` feature
 
-	* Click on a word from any version to add it to the end of the consolidation buffer.
-	* You can also simply edit the buffer manually by clicking in it and typing normally.
-	* Changes cannot yet be saved.
+More user-facing features coming soon
+----------
+
+* `Alignment Table`: for inspecting and modifying automatically generated text alignments; endpoint shape: `tablealignment/{urn}`
+
+* `Folio Ingestion`: for loading images into Brucheion by GUI; endpoint shape: `ingest/`
+
+* `Account Settings` and `Display Settings`: ostensibly for setting user permissions and display options; endpoint has not been populated yet, on offer in right burger menu
+
+Deprecated features
+----------
+
+* `Transcription Comparison`: the one-to-one precursor of one-to-many Multicompare; still works but is no longer used; endpoint shape: `compare/{urn}+{urn2}/`
+
+* `Transcription Consolidation`: for choosing between competing transcriptions; no longer seems to work; endpoint shape: `/consolidate/{urn}+{urn2}/`
+
+* `Morpho-Syntactic Treebank`: for creating and viewing sentence treebanks; never implemented in working condition; endpoint shape: `tree/`; accessible through left burger menu
