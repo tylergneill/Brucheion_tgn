@@ -46,7 +46,7 @@ To start the program with the authentication bypass, pass in the additional para
 
 > Tip: In Windows, this is equally possible with the command line. Otherwise, in order to start by double clicking on an icon while still also bypassing the authorization, it is necessary to first have a shortcut point to the `.exe` file, and then, under this shortcut's `Properties` menu, to add `-noauth true` to the end of the `Target` field. This will cause the parameter to be passed in every time the shortcut is used.
 
-![screenshot](static/img/tutorial_fork)
+![screenshot](static/img/tutorial_fork/shortcut.png)
 
 If start-up was successful, the command line will provide the following status update:
 
