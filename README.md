@@ -60,19 +60,19 @@ Now open a browser of your choice and navigate to:
 
 > Tip: Bookmark this URL in your browser.
 
-![screenshot](...)
+![screenshot](static/img/tutorial_fork/login_screen.png)
 
 At this screen, choose a project by typing in the name that will match the corresponding database (`.db`) file located at the top level of the Brucheion folder (e.g., "01nbh3" to pick out `01nbh3.db`). If creating a new project, simply type the new name here.
 
 The next screen confirms the choice. 
 
-![screenshot](...)
+![screenshot](static/img/tutorial_fork/choice_confirmed.png)
 
 Now click `Forward to Mainpage`. 
 
 The following landing page is very rough, with a few hard-coded links allowing access to particular points within particular projects. 
 
-![screenshot](...)
+![screenshot](static/img/tutorial_fork/landing_page.png)
 
 Any valid URL endpoint within the chosen project will suffice for getting into the GUI, but since Brucheion was developed in the context of the DFG project at Leipzig focusing on Nyāyabhāṣya chapters (*adhyāya*s) 3–5, here, two links are provided specifically for each of these three chapters, in particular, one for each the two major visualization modes developed so far: `Passage Overview` and `Multicompare`. For other projects (e.g., my own dissertation research on the Nyāyabhūṣaṇa), one can in turn rely solely on browser bookmarks. Finally, there is also a `Log out` link, with which one can go back and choose a different project. 
 
@@ -107,7 +107,7 @@ For the sake of this tutorial, now click on `Passage Overview`.
 Passage Overview Mode
 ---------
 
-![screenshot](...)
+![screenshot](static/img/tutorial_fork/Passage_Overview.png)
 
 This is the image-to-text alignment mode.
 
@@ -115,7 +115,7 @@ Here the object image is front-and-center. The image viewer has buttons for zoom
 
 > Tip: Simply refresh the page to clear such drawn features.
 
-In this fork (which focuses on South Asian material in mostly horizontal or landscape layout), the corresponding text appears below the image (as opposed to on the right in the master branch; eventually it should be possible to toggle between the two). This text box has fixed dimensions with a scroll bar, to facilitate maximally close comparison of image and text. Text size can be adjusted with the provided buttons.
+In this fork (which focuses on South Asian material in mostly horizontal or landscape layout), the corresponding text appears below the image (as opposed to on the right in the master branch; eventually it should be possible to toggle between the two, such as is already possible with e.g. `Transcription Desk`, compare note on which below). This text box has fixed dimensions with a scroll bar, to facilitate maximally close comparison of image and text. Text size can be adjusted with the provided buttons.
 
 Above the image, arrow buttons are provided for moving between adjacent passages as defined by CTS URNs (see above for links to background on this citation architecture). To the right of the arrows is a dropdown box with which one can change to other witnesses also extant for the chosen passage. One can also simply modify the URL directly.
 
@@ -123,22 +123,33 @@ Below the text are a number of other features (e.g. metadata) and links to other
 
 At the very top of the page are two menus. The first, `Tools`, contains links to the other modes, most notably `Multicompare`. The second menu, named after the current project, contains a `Log out` link, which will bring one back to the Login screen where a different project can be chosen.
 
-For now, under "Tools", choose "Multicompare" to go to the other of the main two modes.
+For now, under `Tools`, choose `Multicompare` to go to the other of the main two modes.
 
-> Tip: In addition to Brucheion's own navigation buttons and menus, the browser's native forward and back buttons and other browsing history features can be used as normal, provided that one remains logged into the relevant "user" (or here, project).
+> Tip: In addition to Brucheion's own navigation buttons and menus, the browser's native forward and back buttons and other browsing history features can be used as normal, provided that one remains logged into the relevant project.
 
 Multicompare Mode
 --------
 
 This is the many-to-one text alignment mode.
 
+![screenshot](static/img/tutorial_fork/multicompare_default.png)
+
 Here, a base text appears on the lefthand side, and a blank space appears on the righthand side where other witnesses will be aligned. As in `Passage Overview` mode, the overall passage focus can be changed with the arrow buttons. The adjacent witness dropdown box, by contrast, has a slightly different function here: It specifically determines the base text on the *lefthand* side. Below the dropdown box appear several white buttons that can in turn be used to select (by simple siglum) a second witness for alignment on the *righthand* side.
 
 Once selected, the second witness appears on the righthand side, complete with interactive alignment. Yellow color in the base text on the lefthand side  reflects *total, overall* variation in *all witnesses* relative to the base text. Green color in the aligned text on the righthand side indicates *specific* variation in *only that witness* relative to the base text.
 
-For this alignment, lemmata selection — here: chunking by entire words or groups thereof — is currently only automatic (based on an implementation of the Needleman-Wunsch algorithm) and cannot be altered. Hovering with the mouse over text on either side results in tandem highlighting in bold of such corresponding groups on both sides. Clicking on an alignment group on either side results in (persistent bold highlighting at that spot and) a variants summary for that lemma at bottom left. The blue sigla links in this variant summary currently function just as the white buttons above do: to change the selection of the right alignment text.
+For this alignment, the lemmata selection — here: chunking by entire words or groups thereof — is currently only automatic (based on an implementation of the Needleman-Wunsch algorithm) and cannot be altered.
 
-For the option to align and view orthographically normalized transcription text, see "`(Normalize Orthography)`" below under "Features available only as endpoints".
+> But: Compare `Alignment Table` in "More user-facing features coming soon" below.
+
+Hovering with the mouse over text on either side results in tandem highlighting in bold of such corresponding groups on both sides. Clicking on an alignment group on either side results in (persistent bold highlighting at that spot and) a variants summary for that lemma at bottom left. The blue sigla links in this variant summary currently function just as the white buttons above do: to change the selection of the right alignment text.
+
+There is also an option to align and view orthographically normalized transcription text, so as to be able to focus on more significant differences.
+
+![screenshot](static/img/tutorial_fork/multicompare_normalized.png)
+
+For more on this, see `(Normalize Orthography)` below under "Features available only as endpoints".
+
 
 Note also that the same top menus still apply: Under `Tools`, one can return to `Passage Overview`, maintaining focus on the selected base text, or under the second menu, one can `Log out` to end the session and/or switch to a different project.
 
@@ -167,7 +178,7 @@ urn:cite2:nbh:J1img.negative:J1_37v
 
 would correspond to the following structure within `Brucheion/static/image_archive`
 
-![screenshot](...)
+![screenshot](static/img/tutorial_fork/)
 
 > Note: In the Sanskrit projects behind the present description, some pains have been taken to maintain a distinction between (logical) CTS URNs and (object) CITE URNs as regards witness sigla. Namely, manuscript sigla, which contain a letter or letters designating the script (D - Devanāgarī, S - Śāradā, ML - Malayalam, etc.), drop this element in the CITE URN. Thus "J1D" in the logically-oriented CTS URNs corresponds to "J1" in the physically-oriented CITE URNs. Thus, an example RDF triple relating the two types of URN reads:
 
@@ -245,7 +256,7 @@ User-facing features not utilized here
 More user-facing features coming soon
 ----------
 
-* `Alignment Table`: for inspecting and modifying automatically generated text alignments; endpoint shape: `tablealignment/{urn}`
+* `Alignment Table`: for inspecting and modifying automatically generated text alignments; this may also be where import of CTE alignment data into Brucheion will be managed; endpoint shape: `tablealignment/{urn}`
 
 * `Folio Ingestion`: for loading images into Brucheion by GUI; endpoint shape: `ingest/`
 
