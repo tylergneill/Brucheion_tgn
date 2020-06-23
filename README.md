@@ -1,7 +1,7 @@
-Project Overview
+Overview
 -------
 
-This is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”. In this fork, only such small changes to the code were made as were necessary to accomodate my own divergent, limited use of an intermediate stage of Brucheion (2019 – early 2020) as only a *supplementary visualization* tool in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (cte2cex). This was done in the context of research on Sanskrit material, specifically.
+This project is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”. In this fork, only such small changes to the code were made as were necessary to accomodate my own divergent, limited use of an intermediate stage of Brucheion (2019 – early 2020) as only a *supplementary visualization* tool in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (cte2cex). This was done in the context of research on Sanskrit material, specifically. -tgn
 
 Data Prep Prerequisites
 --------
@@ -33,7 +33,7 @@ env GOOS=windows GOARCH=amd64 go build -v brucheion.go
 
 > Tips for recompiling: 1) First install the latest version of Golang [here](https://golang.org/doc/install). 2) Install any required packages that appear in the build error message. 3) Adjust the environment variables as needed if building for other operating systems. 3) Don't forget the `-v` flag.
 
-Start-up and Log-in
+Startup and Login
 ------
 
 With this fork, in a major divergence from Brucheion's intended "user"-based, online collaboration framework, online authentication features are bypassed and the "user" functionality is entirely repurposed for the sake of local management of multiple project workspaces.
@@ -114,7 +114,7 @@ Above the image, arrow buttons are provided for moving between adjacent passages
 
 Below the text are a number of other features (e.g. metadata) and links to other program modes (e.g., `Transcribe`) not needed for the visualization functionality being described here.
 
-At the very top of the page are two menus. The first, `Tools`, contains links to the other modes, most notably `Multicompare`. The second menu, named after the current project, contains a `Logout` link, which will bring one back to the Login screen where a different project can be chosen.
+At the very top of the page are two menus. The first, `Tools`, contains links to the other modes, most notably `Multicompare`. The second menu, named after the current project, contains a `Log out` link, which will bring one back to the Login screen where a different project can be chosen.
 
 For now, under "Tools", choose "Multicompare" to go to the other of the main two modes.
 
@@ -143,7 +143,7 @@ Once orthographic normalization has been performed, whether this or the original
 
 > Note: Changes to this config file only take effect upon starting Brucheion. To refresh with new options, log out of Brucheion, terminate the process, then start the process and log back in again, navigating back to the desired page.
 
-Note also that the same top menus still apply: Under `Tools`, one can return to `Passage Overview`, maintaining focus on the selected base text, or under the second menu, one can `Logout` to end the session and/or switch to a different project.
+Note also that the same top menus still apply: Under `Tools`, one can return to `Passage Overview`, maintaining focus on the selected base text, or under the second menu, one can `Log out` to end the session and/or switch to a different project.
 
 > Note: Moving from `Multicompare` to `Passage Overview` while maintaining focus on the *aligned witness on the righthand* side is not yet supported. This functionality has been supplemented with the use of a small Python script, included here.
 
