@@ -28,10 +28,10 @@ go build -v
 or for another system with a command like
 
 ~~~~
-env GOOS=windows GOARCH=amd64 go build -v brucheion.go
+env GOOS=windows GOARCH=amd64 go build -v
 ~~~~
 
-> Tips for recompiling: 1) First install the latest version of Golang [here](https://golang.org/doc/install). 2) Install any required packages that appear in the build error message. 3) Adjust the environment variables as needed if building for other operating systems. 3) Don't forget the `-v` flag.
+> Tips for recompiling: 1) First install the latest version of Golang [here](https://golang.org/doc/install). 2) Install any required packages that appear in the build error message, using the `go get` command. 3) Adjust the environment variables as needed if building for other operating systems. 3) Don't forget the `-v` flag.
 
 Startup and Login
 ------
@@ -41,12 +41,12 @@ With this fork, in a major divergence from Brucheion's intended "user"-based, on
 To start the program with the authentication bypass, pass in the additional parameter `-noauth true`. In order to do this, it's easiest to launch from the command line, e.g., in macOS (and similarly in Linux):
 
 ~~~~
-./Brucheion -noauth true
+./Brucheion_tgn -noauth true
 ~~~~
 
 > Tip: In Windows, this is equally possible with the command line. Otherwise, in order to start by double clicking on an icon while still also bypassing the authorization, it is necessary to first have a shortcut point to the `.exe` file, and then, under this shortcut's `Properties` menu, to add `-noauth true` to the end of the `Target` field. This will cause the parameter to be passed in every time the shortcut is used.
 
-![screenshot](...)
+![screenshot](static/img/tutorial_fork)
 
 If start-up was successful, the command line will provide the following status update:
 
@@ -96,11 +96,18 @@ For the sake of this tutorial, one should first load a database from a CEX file.
 |nbh_5_mss.cex											|09nbh5mss|
 |nbh_3_mss_and_nbh_4_mss_incomplete_and_nbh_5_mss.cex	|10nbh3mssAndNbh4mssIncompleteAndNbh5mss|
 
+To load, for example, the first of these CEX files manually (as opposed to with the help of cte2cex, see which), while logged into project `01nbh3mss`, enter as a URL in a new tab:
+
+`http://localhost:7000/load/nbh_3_mss`
+
+A "success" message in that tab should confirm the load. Navigate back to the landing page.
 
 For the sake of this tutorial, now click on `Passage Overview`.
 
 Passage Overview Mode
 ---------
+
+![screenshot](...)
 
 This is the image-to-text alignment mode.
 
@@ -131,17 +138,7 @@ Once selected, the second witness appears on the righthand side, complete with i
 
 For this alignment, lemmata selection — here: chunking by entire words or groups thereof — is currently only automatic (based on an implementation of the Needleman-Wunsch algorithm) and cannot be altered. Hovering with the mouse over text on either side results in tandem highlighting in bold of such corresponding groups on both sides. Clicking on an alignment group on either side results in (persistent bold highlighting at that spot and) a variants summary for that lemma at bottom left. The blue sigla links in this variant summary currently function just as the white buttons above do: to change the selection of the right alignment text.
 
-There is also an option to instead align and view orthographically normalized transcription text, which can help direct attention to more significant variants. This feature, which works by way of regular expressions, is currently available by API call only. The command can be entered in the browser (e.g., another tab) or via the command line (e.g., with curl):
-
-`localhost:7000/normalizeAndSave/all/`
-
-> Tip: Bookmark this URL.
-
-> Note: This command (re)-normalizes the entire database at once. There also exists an alternative API endpoint `localhost:7000/normalizeTemporarily/`, which requires a full CTS URN (e.g. `localhost:7000/normalizeTemporarily/urn:cts:sktlit:skt0001.nyaya002.C3D:3.1.1/`), which does not save and so can be used for testing. Options for toggling normalization and/or specifying a different set of (e.g., language- or dialect-specific) regular expressions can be managed in the file `config.json`.
-
-Once orthographic normalization has been performed, whether this or the original text is displayed in Multicompare is controlled by a toggle in the Brucheion `config.json` file.
-
-> Note: Changes to this config file only take effect upon starting Brucheion. To refresh with new options, log out of Brucheion, terminate the process, then start the process and log back in again, navigating back to the desired page.
+For the option to align and view orthographically normalized transcription text, see "`(Normalize Orthography)`" below under "Features available only as endpoints".
 
 Note also that the same top menus still apply: Under `Tools`, one can return to `Passage Overview`, maintaining focus on the selected base text, or under the second menu, one can `Log out` to end the session and/or switch to a different project.
 
@@ -217,13 +214,22 @@ Finally, a CEX file must be placed in the `Brucheion/cex` folder in order for th
 Features available only as endpoints
 ----------
 
-* `(Load CEX)`: for ingesting CEX data; creates or overwrites internal Bolt database (`.db`), which is stored at top level of Brucheion directory; endpoint shape: `load/{cex}/`
+* `(Load CEX)`: for ingesting CEX data; creates or overwrites the internal Bolt database (`.db`), which is stored at top level of Brucheion directory; endpoint shape: `load/{cex}/`
 
 > Note: For any work mentioned in the CEX file being loaded, all associated nodes already existing in the database will be deleted. Then, the individual nodes mentioned in said CEX file will be reinstated in the database with their newly loaded content.
 
 * `(Initialize Image Database)`: for creating a internal to manage available image files; must be done once for each newly created project (main Brucheion: "user") database; endpoint shape: `newCITECollection/{urn}`
 
 > Note: Any URN will work, but then it will be the "Collection" name that appears in, for example, `Image Citation Editor`, see more on which below.
+
+* `(Normalize Orthography)`: for creating a orthographically normalized version of database text to be displayed in `Multicompare` mode; endpoint shape: `normalizeAndSave/all/`
+
+> Usage Tips:
+
+	1. This command (re)-normalizes the entire database at once. There also exists an alternative API endpoint of shape `normalizeTemporarily/{urn}`, which normalizes only a single passage of a single work, without saving, and so it can be used for testing.
+	2. The display of normalized text in `Multicompare` can be toggled in the Brucheion config file (`config.json`).
+	3. This normalization works by way of regular expressions. A different set of language- or dialect-specific regular expressions can be created on the pattern of the Sanskrit one provided and then chosen in the file `config.json`.
+	4. Changes to the config file only take effect upon starting Brucheion. To refresh with new options, log out of Brucheion, terminate the process, then start the process and log back in again, navigating back to the desired page.
 
 User-facing features not utilized here
 ----------

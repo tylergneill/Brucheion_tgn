@@ -1,18 +1,20 @@
 # Windows and Mac OS X
 Thumbs.db
 .DS_Store
-*.db
-users.db
 
-# exclude image_archive and cex
+# image_archive and cex
 static/image_archive/*
 cex/*
 
-# exception to the rule
+# exceptions to the rule
 !cex/.gitkeep
 !static/image_archive/test/
 
-#Goland imls and xmls
+# Bolt databases
+*.db
+users.db
+
+#Golang imls and xmls
 .idea/*
 
 #sublime project files
