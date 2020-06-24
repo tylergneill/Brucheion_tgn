@@ -123,7 +123,7 @@ Here the object image is front-and-center. The image viewer has buttons for zoom
 
 In this fork (which focuses on South Asian material in mostly horizontal or landscape layout), the corresponding text appears below the image (as opposed to on the right in the master branch; eventually it should be possible to toggle between the two, such as is already possible with e.g. `Transcription Desk`, compare note on which below). This text box has fixed dimensions with a scroll bar, to facilitate maximally close comparison of image and text. Text size can be adjusted with the provided buttons.
 
-Above the image, arrow buttons are provided for moving between adjacent passages as defined by CTS URNs (see above for links to background on this citation architecture). To the right of the arrows is a dropdown box with which one can change to other witnesses also extant for the chosen passage. One can also simply modify the URL directly.
+Above the image, arrow buttons are provided for moving between adjacent passages as defined by CTS URNs (see above for links to background on this citation architecture). To the right of the arrows is a dropdown box with which one can change to other witnesses also extant for the chosen passage. One can also simply modify the URL directly. In this way, one can move with great speed though multiple dimensions of the philological space.
 
 Below the text are a number of other features (e.g. metadata) and links to other program modes (e.g., `Transcribe`) not needed for the visualization functionality being described here.
 
@@ -280,9 +280,12 @@ for creating and editing transcription data (corresponding to `#!ctsdata` block 
 ![screenshot](static/img/tutorial_fork/transcription_desk.png)
 
 ### `Image Citation/(Reference) Editor`
-for creating and editing text-to-image relation data (corresponding to `#!relations` block of CEX file) in Brucheion's internal Bolt database; usage involves building and saving a `#`-separated list of CITE URN object references in the `ImageRef` box on the right with the help of the controls on the left (viewer plug-in — which also facilitates specifying subparts of images — as well as dropdown menus)
+for creating and editing text-to-image relation data (corresponding to `#!relations` block of CEX file) in Brucheion's internal Bolt database
 
-> Note: The "Select Image" dropdown currently seem unable to give access any individual items.
+> Usage Notes:
+
+1. The goal is to build and save a `#`-separated list of CITE URN object references in the `ImageRef` box on the right with the help of the controls on the left (viewer plug-in — which also facilitates specifying subparts of images — as well as dropdown menus). Confirm a drawn box with the check mark, and add the selection to the right with the plus symbol.
+2. The "Select Image" dropdown currently seem unable to give access any individual items.
 
 ![screenshot](static/img/tutorial_fork/image_citation_editor.png)
 
