@@ -1,14 +1,14 @@
 Overview
 -------
 
-This project is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”. In this fork, only such small changes to the code were made as were necessary to accomodate my own divergent, limited use of an intermediate stage of Brucheion (2019 – early 2020) as only a *supplementary visualization* tool in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (cte2cex). This was done in the context of research on Sanskrit material, specifically. -tgn
+This project is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”. In this fork, only such small changes to the code were made as were necessary to accomodate my own divergent, limited use of an intermediate stage of Brucheion (2019 – early 2020) as only a *supplementary visualization* tool in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (`cte2cex`). This was done in the context of research on Sanskrit material, specifically. -tgn
 
 Data Prep Prerequisites
 --------
 
 In the future Brucheion VRE, it should become possible to start with nothing but images of one's textual object(s) (e.g., manuscript folia) and then proceed immediately to ingest those images into the VRE, create text transcriptions of them, and link the transcriptions to the images or even parts thereof, all within the program's graphical user interface (GUI).
 
-In the different workflow which this fork accommodates, by contrast, images are prepared and added to Brucheion manually, transcripts are prepared elsewhere (either in CTE or in plain-text), and image-text relations are established automatically by the cte2cex conversion tool on the basis of the carefully prepared transcripts. Prepared Sanskrit data is available at the following locations:
+In the different workflow which this fork accommodates, by contrast, images are prepared and added to Brucheion manually, transcripts are prepared elsewhere (either in CTE or in plain-text), and image-text relations are established automatically by the `cte2cex` conversion tool on the basis of the carefully prepared transcripts. Prepared Sanskrit data is available at the following locations:
 
 Nyāyabhāṣya "sliced" (DZI) image files: [https://gitlab.com/dfg_nbh/nbh](https://gitlab.com/dfg_nbh/nbh) (private)
 
@@ -96,7 +96,7 @@ For the sake of this tutorial, one should first load a database from a CEX file.
 |nbh_5_mss.cex											|09nbh5mss|
 |nbh_3_mss_and_nbh_4_mss_incomplete_and_nbh_5_mss.cex	|10nbh3mssAndNbh4mssIncompleteAndNbh5mss|
 
-To load, for example, the first of these CEX files manually (as opposed to with the help of cte2cex, see which), while logged into project `01nbh3mss`, and with the CEX in their proper folder (`Brucheion/cex`) enter the following URL in a new tab:
+To load, for example, the first of these CEX files manually (as opposed to with the help of `cte2cex`, see which), while logged into project `01nbh3mss`, and with the CEX in their proper folder (`Brucheion/cex`) enter the following URL in a new tab:
 
 `localhost:7000/load/nbh_3_mss`
 
@@ -123,13 +123,17 @@ Here the object image is front-and-center. The image viewer has buttons for zoom
 
 In this fork (which focuses on South Asian material in mostly horizontal or landscape layout), the corresponding text appears below the image (as opposed to on the right in the master branch; eventually it should be possible to toggle between the two, such as is already possible with e.g. `Transcription Desk`, compare note on which below). This text box has fixed dimensions with a scroll bar, to facilitate maximally close comparison of image and text. Text size can be adjusted with the provided buttons.
 
+Moreover, this text box features accurate line number information in bold on the lefthand side. The `cte2cex` sources some of these line numbers from folio identifiers placed manually in the carefully prepared transcripts, and it also augments this transcript information by automatically creating additional such folio identifiers with calculated line numbers at the beginnings of each passage. In turn, the present Brucheion fork interprets accordingly.
+
 Above the image, arrow buttons are provided for moving between adjacent passages as defined by CTS URNs (see above for links to background on this citation architecture). To the right of the arrows is a dropdown box with which one can change to other witnesses also extant for the chosen passage. One can also simply modify the URL directly. In this way, one can move with great speed though multiple dimensions of the philological space.
 
 Below the text are a number of other features (e.g. metadata) and links to other program modes (e.g., `Transcribe`) not needed for the visualization functionality being described here.
 
-At the very top of the page are two menus. The first, `Tools`, contains links to the other modes, most notably `Multicompare`. The second menu, named after the current project, contains a `Log out` link, which will bring one back to the Login screen where a different project can be chosen.
+At the very top of the page are two menus. The first, `Tools`, contains links to the other modes, most notably `Multicompare`. The second menu, named after the current project, mainly contains a `Log out` link, which will bring one back to the Login screen where a different project can be chosen.
 
-For now, under `Tools`, choose `Multicompare` to go to the other of the main two modes.
+> Note: The main version of Brucheion places and sizes these top and bottom elements differently.
+
+To continue the tutorial, now, under `Tools`, choose `Multicompare` to go to the other of the main two visualization modes.
 
 > Tip: In addition to Brucheion's own navigation buttons and menus, the browser's native forward and back buttons and other browsing history features can be used as normal, provided that one remains logged into the relevant project.
 
@@ -167,14 +171,14 @@ Note also that the same top menus still apply: Under `Tools`, one can return to 
 
 > Similar Note: It's also not yet possible to use the arrow keys to move between passages in `Multicompare` while maintaining focus on the same aligned witness on the righthand side; one must either choose it again by clicking, or one can move between passages by modifying the URL directly (without changing the aligned witness parameter after the hashtag).
 
-Updating with cte2cex Conversion Pipeline
+Updating with `cte2cex` Conversion Pipeline
 --------
 
-In the course of using Brucheion to visualize transcript data, one may make new discoveries, and it may become necessary to make changes to that textual data in the primary files (e.g., CTE, txt). In order to update Brucheion with the new changes, first one should be logged into the desired project. While logged in, go to the command line and run the cte2cex conversion script for the given project (i.e., with the project JSON file) along with the `-u` flag in order to update the database by overwriting it with the re-imported transcript data. 
+In the course of using Brucheion to visualize transcript data, one may make new discoveries, and it may become necessary to make changes to that textual data in the primary files (e.g., CTE, txt). In order to update Brucheion with the new changes, first one should be logged into the desired project. While logged in, go to the command line and run the `cte2cex` conversion script for the given project (i.e., with the project JSON file) along with the `-u` flag in order to update the database by overwriting it with the re-imported transcript data. 
 
 ![screenshot](static/img/tutorial_fork/update.png)
 
-The reloading of the new cex data into the database will produce a new tab in the browser confirming the operation. If the orthography normalization option in the cte2cex project config file is selected, this will also be redone at this time, again in its own new tab.
+The reloading of the new cex data into the database will produce a new tab in the browser confirming the operation. If the orthography normalization option in the `cte2cex` project config file is selected, this will also be redone at this time, again in its own new tab.
 
 See [separate cte2cex GitHub repo](https://github.com/tylergneill/cte2cex) for more.
 
@@ -212,13 +216,13 @@ Once positioned in this way, images are now ready for Brucheion to find and asso
 CEX Setup
 -----
 
-Transcripts prepared outside of Brucheion can be done so either in CTE (as in the DFG Nyāyabhāṣya project) or in plain-text format (as in my own dissertation research on the Nyāyabhūṣaṇa); the associated cte2cex conversion tool accepts both. More importantly, however, the textual content of these transcripts must be formatted rather strictly, especially including particular milestones for both logical and physical transition points.
+Transcripts prepared outside of Brucheion can be done so either in CTE (as in the DFG Nyāyabhāṣya project) or in plain-text format (as in my own dissertation research on the Nyāyabhūṣaṇa); the associated `cte2cex` conversion tool accepts both. More importantly, however, the textual content of these transcripts must be formatted rather strictly, especially including particular milestones for both logical and physical transition points.
 
 Logical milestones (a.k.a. "chapter" or "passage identifiers") anticipate CTS URNs (see [here](https://www.homermultitext.org/hmt-doc/cite/texts/ctsoverview.html) and [here](http://cite-architecture.org/cts/) for background info on the CITE architecture): for example, "3.1.1" for book 1, section 1, verse 1 in the Nyāyabhāṣya.
 
-The format of physical milestones (a.k.a. "object identifiers" or more simply folio/page and line breaks) is assumed by cte2cex to consist of a "siglum" abbreviation of the source plus other material (e.g., "J1D_102r1", for witness J1D, folio 102, side r, line 1). 
+The format of physical milestones (a.k.a. "object identifiers" or more simply folio/page and line breaks) is assumed by `cte2cex` to consist of a "siglum" abbreviation of the source plus other material (e.g., "J1D_102r1", for witness J1D, folio 102, side r, line 1). 
 
-For more on these specifications, see cte2cex's [input guidelines](https://github.com/tylergneill/cte2cex/blob/master/input_guidelines.md).
+For more on these specifications, see `cte2cex`'s [input guidelines](https://github.com/tylergneill/cte2cex/blob/master/input_guidelines.md).
 
 Ultimately, all transcript material for a given project to be visualized in Brucheion must be consolidated into a single CEX (`.cex`) file, which becomes the basis for the Bolt database (`.db`) file. A CEX file, as used here (further detail can be found [here](...)), is comprised of three blocks of data:
 
@@ -228,7 +232,7 @@ Ultimately, all transcript material for a given project to be visualized in Bruc
 
 * `#!relations`: here, just text-to-image relationships, expressed as RDF triples (e.g., "(text x) (appears on) (image y)")
 
-If building a new project from scratch for use with such a protocol, it takes considerable effort to transform one's textual data into this format. Firstly, one must certainly already have segmented one's text into reasonably sized portions, each with its own CTS identifier, and these logical divisions must be marked unambiguously in the transcription data itself. Next, all non-plain-text content (font formatting, XML tags, etc.) must be filtered out somehow; for this, the cte2cex pipeline, based on regular expressions, can  lend a hand.
+If building a new project from scratch for use with such a protocol, it takes considerable effort to transform one's textual data into this format. Firstly, one must certainly already have segmented one's text into reasonably sized portions, each with its own CTS identifier, and these logical divisions must be marked unambiguously in the transcription data itself. Next, all non-plain-text content (font formatting, XML tags, etc.) must be filtered out somehow; for this, the `cte2cex` pipeline, based on regular expressions, can  lend a hand.
 
 > Note: Line breaks are specially provided for within Brucheion by the tag "-NEWLINE-"  in the Golang code-base itself. Other such tags may eventually be forthcoming.
 
@@ -238,7 +242,7 @@ Finally, one must actually put together the CEX file itself, completely with pro
 
 The `#!ctsdata` block is most essential. Each line of identifier and content constitutes a node. Nodes are connected to each other via "previous" and "next" relationships within the corresponding Bolt database; these are established upon import based on their ordering relative to each other in the CEX file. Thus, while identifiers may well constitute a logical numerical sequence, they need not do so. It is also possible to create and populate nodes totally within the GUI, at run-time, but currently it is only possible to do so at the beginning or end of a sequence of a given work; in any case, no run-time modification functionality is used in the visualization implementation described here.
 
-The `#!relations` block is used here to prepopulate the database with relations worked out in advance, with the help of the cte2cex conversion tool, based on the transcription files.
+The `#!relations` block is used here to prepopulate the database with relations worked out in advance, with the help of the `cte2cex` conversion tool, based on the transcription files.
 
 Namely, once one's transcript data consistently marks both chapter and object identifiers with consistent formatting, it is then merely a mechanical matter to extract a linear sequence of such identifiers, on the one hand, and textual content, on the other, and then from this sequence, one can further mechanically build a table of paired identifiers, which then simply needs to be formatted as RDF triplets (here: chapter-verb-object) which can then be incorporated directly into the CEX file. It's also possible to use the `Image References Editor` within the GUI to specify individual relations, even to the level of parts of images, but that is not used here.
 
