@@ -259,21 +259,33 @@ Features available only as endpoints
 
 > Usage Tips:
 
-	1. This command (re)-normalizes the entire database at once. There also exists an alternative API endpoint of shape `normalizeTemporarily/{urn}`, which normalizes only a single passage of a single work, without saving, and so it can be used for testing.
-	2. The display of normalized text in `Multicompare` can be toggled in the Brucheion config file (`config.json`).
-	3. This normalization works by way of regular expressions. A different set of language- or dialect-specific regular expressions can be created on the pattern of the Sanskrit one provided and then chosen in the file `config.json`.
-	4. Changes to the config file only take effect upon starting Brucheion. To refresh with new options, log out of Brucheion, terminate the process, then start the process and log back in again, navigating back to the desired page.
+1. This command (re)-normalizes the entire database at once. There also exists an alternative API endpoint of shape `normalizeTemporarily/{urn}`, which normalizes only a single passage of a single work, without saving, and so it can be used for testing.
+2. The display of normalized text in `Multicompare` can be toggled in the Brucheion config file (`config.json`).
+3. This normalization works by way of regular expressions. A different set of language- or dialect-specific regular expressions can be created on the pattern of the Sanskrit one provided and then chosen in the file `config.json`.
+4. Changes to the config file only take effect upon starting Brucheion. To refresh with new options, log out of Brucheion, terminate the process, then start the process and log back in again, navigating back to the desired page.
 
 User-facing features not utilized here
 ----------
 
 * `Edit Metadata`: for editing catalog data (corresponding to `#!ctscatalog` block of CEX file) in Brucheion's internal Bolt database
 
-* `Transcription Desk`: for creating and editing transcription data (corresponding to `#!ctsdata` block of CEX file) for storage in Brucheion's internal Bolt database; currently features a toggle between horizontal and vertical orientations
+![screenshot](static/img/tutorial_fork/edit_metadata.png)
 
-* `Image Citation/(Reference) Editor`: for creating and editing text-to-image relation data (corresponding to `#!relations` block of CEX file) in Brucheion's internal Bolt database; usage involves building and saving a `#`-separated list of CITE URN object references in the `ImageRef` box on the right with the help of the controls on the left (viewer plug-in — which also facilitates specifying subparts of images — as well as dropdown menus, among which "Select Image" currently seem unable to give access any individual items)
+* `Transcription Desk`: for creating and editing transcription data (corresponding to `#!ctsdata` block of CEX file) for storage in Brucheion's internal Bolt database
 
-* `Download CEX`: for exporting internal Bolt database as a single CEX file; output not yet round-trip compatible with `load` feature
+> Note: Currently features a toggle between horizontal and vertical orientations.
+
+![screenshot](static/img/tutorial_fork/transcription_desk.png)
+
+* `Image Citation/(Reference) Editor`: for creating and editing text-to-image relation data (corresponding to `#!relations` block of CEX file) in Brucheion's internal Bolt database; usage involves building and saving a `#`-separated list of CITE URN object references in the `ImageRef` box on the right with the help of the controls on the left (viewer plug-in — which also facilitates specifying subparts of images — as well as dropdown menus)
+
+> Note: The "Select Image" dropdown currently seem unable to give access any individual items.
+
+![screenshot](static/img/tutorial_fork/image_citation_editor.png)
+
+* `Download CEX`: for exporting internal Bolt database as a single CEX file; on offer in right burger menu
+
+> Note: Exported CEX not yet round-trip compatible with `load` feature.
 
 More user-facing features coming soon
 ----------
