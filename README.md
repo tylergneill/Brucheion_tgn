@@ -247,15 +247,15 @@ Finally, a CEX file must be placed in the `Brucheion/cex` folder in order for th
 Features available only as endpoints
 ----------
 
-* # `(Load CEX)`: for ingesting CEX data; creates or overwrites the internal Bolt database (`.db`), which is stored at top level of Brucheion directory; endpoint shape: `load/{cex}/`
+### `(Load CEX)`: for ingesting CEX data; creates or overwrites the internal Bolt database (`.db`), which is stored at top level of Brucheion directory; endpoint shape: `load/{cex}/`
 
 > Note: For any work mentioned in the CEX file being loaded, all associated nodes already existing in the database will be deleted. Then, the individual nodes mentioned in said CEX file will be reinstated in the database with their newly loaded content.
 
-* # `(Initialize Image Database)`: for creating a internal to manage available image files; must be done once for each newly created project (main Brucheion: "user") database; endpoint shape: `newCITECollection/{urn}`
+### `(Initialize Image Database)`: for creating a internal to manage available image files; must be done once for each newly created project (main Brucheion: "user") database; endpoint shape: `newCITECollection/{urn}`
 
 > Note: Any URN will work, but then it will be the "Collection" name that appears in, for example, `Image Citation Editor`, see more on which below.
 
-* # `(Normalize Orthography)`: for creating a orthographically normalized version of database text to be displayed in `Multicompare` mode; endpoint shape: `normalizeAndSave/all/`
+### `(Normalize Orthography)`: for creating a orthographically normalized version of database text to be displayed in `Multicompare` mode; endpoint shape: `normalizeAndSave/all/`
 
 > Usage Tips:
 
@@ -267,26 +267,26 @@ Features available only as endpoints
 User-facing features not utilized here
 ----------
 
-* # `Edit Metadata`
+### `Edit Metadata`
 for editing catalog data (corresponding to `#!ctscatalog` block of CEX file) in Brucheion's internal Bolt database
 
 ![screenshot](static/img/tutorial_fork/edit_metadata.png)
 
-* # `Transcription Desk`
+### `Transcription Desk`
 for creating and editing transcription data (corresponding to `#!ctsdata` block of CEX file) for storage in Brucheion's internal Bolt database
 
 > Note: Currently features a toggle between horizontal and vertical orientations.
 
 ![screenshot](static/img/tutorial_fork/transcription_desk.png)
 
-* # `Image Citation/(Reference) Editor`
+### `Image Citation/(Reference) Editor`
 for creating and editing text-to-image relation data (corresponding to `#!relations` block of CEX file) in Brucheion's internal Bolt database; usage involves building and saving a `#`-separated list of CITE URN object references in the `ImageRef` box on the right with the help of the controls on the left (viewer plug-in — which also facilitates specifying subparts of images — as well as dropdown menus)
 
 > Note: The "Select Image" dropdown currently seem unable to give access any individual items.
 
 ![screenshot](static/img/tutorial_fork/image_citation_editor.png)
 
-* # `Download CEX`
+### `Download CEX`
 for exporting internal Bolt database as a single CEX file; on offer in right burger menu
 
 > Note: Exported CEX not yet round-trip compatible with `load` feature.
@@ -294,13 +294,13 @@ for exporting internal Bolt database as a single CEX file; on offer in right bur
 More user-facing features coming soon
 ----------
 
-* # `Alignment Table`
+### `Alignment Table`
 for inspecting and modifying automatically generated text alignments; this may also be where import of CTE alignment data into Brucheion will be managed; endpoint shape: `tablealignment/{urn}`
 
-* # `Folio Ingestion`
+### `Folio Ingestion`
 for loading images into Brucheion by GUI; endpoint shape: `ingest/`
 
-* # `Account Settings` and `Display Settings`
+### `Account Settings` and `Display Settings`
 ostensibly for setting user permissions and display options; endpoint has not been populated yet, on offer in right burger menu
 
 Deprecated features
