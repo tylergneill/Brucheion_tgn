@@ -178,6 +178,11 @@ The reloading of the new cex data into the database will produce a new tab in th
 
 See [separate cte2cex GitHub repo](https://github.com/tylergneill/cte2cex) for more.
 
+(End of visualization tutorial)
+======
+
+> Following are additional details on data prep and further features of Brucheion.
+
 Image Archive Setup
 -------
 
