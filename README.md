@@ -150,11 +150,11 @@ To continue the tutorial, now, under `Tools`, choose `Multicompare` to go to the
 Multicompare Mode
 --------
 
-This is the one-to-many text alignment mode.
+This is the many-to-many text alignment mode.
 
 ![screenshot](static/img/tutorial_fork/multicompare_default_empty.png)
 
-Here, a base text appears on the lefthand side, and a blank space appears on the righthand side where other witnesses will be aligned. As in `Passage Overview` mode, the overall passage focus can be changed with the arrow buttons. The adjacent witness dropdown box, by contrast, has a slightly different function here: It specifically determines the base text on the *lefthand* side. Below the dropdown box appear several white buttons that can in turn be used to select (by simple siglum) a second witness for alignment on the *righthand* side.
+Here, a base text appears on the lefthand side, and a blank space appears on the righthand side where other witnesses will be aligned. As in `Passage Overview` mode, the overall passage focus can be changed with the arrow buttons. The adjacent witness dropdown box, by contrast, has a slightly different function here: It specifically determines the base text on the *lefthand* side. Any witness can serve as the base-text (hence "many-to-many"). Below the dropdown box appear several white buttons that can in turn be used to select (by simple siglum) a second witness for alignment on the *righthand* side.
 
 Once selected, the second witness appears on the righthand side, complete with interactive alignment. 
 
@@ -330,7 +330,7 @@ ostensibly for setting user permissions and display options; endpoint has not ye
 (Deprecated features)
 ----------
 
-* `Transcription Comparison`: the one-to-one precursor of one-to-many Multicompare; still works but is no longer used; endpoint shape: `compare/{urn}+{urn2}/`
+* `Transcription Comparison`: the one-to-one precursor of many-to-many Multicompare; still works but is no longer used; endpoint shape: `compare/{urn}+{urn2}/`
 
 * `Transcription Consolidation`: for choosing between competing transcriptions; no longer seems to work; endpoint shape: `/consolidate/{urn}+{urn2}/`
 
