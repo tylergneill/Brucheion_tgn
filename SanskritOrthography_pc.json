@@ -11,7 +11,7 @@
     {"description": "discard_deletions",      "pattern": "\\[[^\\]]+?\\]",                   "replacement": ""},
     {"description": "keep_additions",         "pattern": "〈([^〉]+?)〉",                      "replacement": "$1"},
 
-    {"description": "remove_punctuation_1",   "pattern": "[\\|/\\*\\^\\?!—\",;:¤¶=-]",       "replacement": ""},
+    {"description": "remove_punctuation_1",   "pattern": "[\\|।/\\*\\^\\?!—\",;:¤¶=-]",       "replacement": ""},
     {"description": "remove_punctuation_2",   "pattern": "[“”]",                             "replacement": ""},
     {"description": "remove_punctuation_3",   "pattern": "([^\\d])[\\.]",                    "replacement": "$1"},
     {"description": "remove_avagraha",        "pattern": "[’']",                             "replacement": ""},

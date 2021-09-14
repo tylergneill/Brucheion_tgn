@@ -42,6 +42,10 @@ func main() {
 		log.Println("Started in noAuth mode.")
 	}
 
+	if *flipHighlight {
+		log.Println("Flipping highlighting.")
+	}
+
 	//Create new router instance with associated routes
 	router := setUpRouter()
 

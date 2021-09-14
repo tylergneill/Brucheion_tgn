@@ -5,6 +5,7 @@ import (
 )
 
 var noAuth *bool
+var flipHighlight *bool
 var configLocation *string
 
 // initializeFlags defines how the flags are to behave
@@ -12,6 +13,8 @@ var configLocation *string
 //configLocation can be used to specify the location of the config file when needed.
 func initializeFlags() {
 	noAuth = flag.Bool("noauth", false, "Start Brucheion without authentificating with a provider (default: false)")
+
+	flipHighlight = flag.Bool("flip", false, "flip highlight on multicompare (default: false)")
 
 	configLocation = flag.String("config", "./config.json", "Specify where to load the JSON config from. (defalult: ./config.json")
 
