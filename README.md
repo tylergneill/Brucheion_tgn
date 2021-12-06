@@ -1,7 +1,14 @@
 Overview
 -------
 
-This project is a fork of [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”. This fork came about in the context of both personal and collaborative research on Sanskrit material, specifically, and in it, I've made only those small changes to the code that helped accommodate our limited use of an intermediate stage of Brucheion (2019 – early 2020) as a *supplementary visualization tool* in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (`cte2cex`). -tgn
+This repo is a fork of Thomas Köntges' [Brucheion](https://github.com/Brucheion/Brucheion), which continues to actively develop toward its goal of being “a Virtual Research Environment (VRE) to create Linked Open Data (LOD) for historical languages and the research of historical objects”.
+
+To encourage interest in this project, I've Dockerized a snapshot of the above main branch (Oct 2021) along with my Sanskrit dissertation material data (Nyāyabhūṣaṇa 104–154) and placed it on Heroku for public perusal. Interact with it live online at [http://brucheion-nbhu.herokuapp.com](http://brucheion-nbhu.herokuapp.com). After you click on this link and see the landing page, login using the name "nbhuAvayavin", then use the following URL to get started: [http://brucheion-nbhu.herokuapp.com/multicompare/urn:cts:sktlit:skt0001.nyaya006.CrE:104,6;1/](http://brucheion-nbhu.herokuapp.com/multicompare/urn:cts:sktlit:skt0001.nyaya006.CrE:104,6;1/).
+
+The rest of this README documents how to use my fork, which came about in the context of both personal and collaborative research on Sanskrit material, specifically. I made only a few small changes to the code that helped my Indological team ([see here](https://www.gkr.uni-leipzig.de/institut-fuer-indologie-und-zentralasienwissenschaften/forschung/aktuelle-forschungsprojekte/)) use an intermediate stage of Brucheion (2019 – early 2020) in a limited way, namely, as a *supplementary visualization tool* in combination with two other pieces of software: the [Classical Text Editor](https://cte.oeaw.ac.at/) (CTE) and a custom-built, [Python-based pipeline for converting to Brucheion's CEX format](https://github.com/tylergneill/cte2cex) (`cte2cex`). 
+
+My intention is to eventually incorporate my preferred changes in the fork (e.g., projects, automatic manuscript line numbers) into the live Heroku version. If I can ever get rights to display the manuscript images, I would like to do that, too.
+
 
 Data Prep Prerequisites
 --------
